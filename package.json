@@ -1,0 +1,75 @@
+{
+  "name": "ApikoAgroMobile",
+  "author": "Maksim Romanyuk <maxim.v.romanyuk@gmail.com>",
+  "description": "React Native App for Apiko Agro",
+  "license": "AGPL-3.0",
+  "bugs": "https://github.com/JSSolutions-Academy/Apiko-Agro-Mobile/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JSSolutions-Academy/Apiko-Agro-Mobile"
+  },
+  "keywords": [
+    "React Native",
+    "Web Client",
+    "Redux"
+  ],
+  "version": "0.0.1",
+  "private": false,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "android": "node node_modules/react-native/local-cli/cli.js run-android",
+    "ios": "node node_modules/react-native/local-cli/cli.js run-ios",
+    "bundle:ios": "node ./node_modules/react-native/local-cli/cli.js bundle --platform ios --entry-file index.ios.js --bundle-output ios/ApikoAgroMobile/main.jsbundle --dev=false --verbose",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "lint": "eslint src test",
+    "coverage": "rimraf coverage && jest --coverage"
+  },
+  "jest": {
+    "preset": "react-native",
+    "setupFiles": ["<rootDir>/test/setup.js"],
+    "transformIgnorePatterns": [
+      "node_modules/(?!(jest-)?react-native|react-navigation)"
+    ]
+  },
+  "dependencies": {
+    "bluebird": "^3.3.5",
+    "event-emitter": "^0.3.4",
+    "immutable": "^3.7.6",
+    "lodash": "^4.11.0",
+    "moment": "^2.12.0",
+    "react": "~15.4.2",
+    "react-dom": "~15.4.2",
+    "react-native": "0.42.0",
+    "react-native-vector-icons": "^4.0.0",
+    "react-navigation": "^1.0.0-beta.7",
+    "react-redux": "^4.4.5",
+    "redux": "^3.4.0",
+    "redux-logger": "^2.6.1",
+    "redux-loop-symbol-ponyfill": "^2.2.0",
+    "redux-promise": "^0.5.3",
+    "redux-thunk": "^2.0.1",
+    "standard-http-error": "^2.0.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.9.0",
+    "babel-eslint": "^7.1.0",
+    "babel-jest": "^17.0.2",
+    "babel-polyfill": "^6.9.0",
+    "babel-preset-react-native": "^1.9.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "babel-register": "^6.9.0",
+    "enzyme": "^2.2.0",
+    "eslint": "^3.10.1",
+    "eslint-plugin-babel": "^3.2.0",
+    "eslint-plugin-react": "^6.7.1",
+    "fetch-mock": "^5.5.0",
+    "istanbul": "1.0.0-alpha.2",
+    "jest": "^17.0.2",
+    "react-addons-test-utils": "~15.4.2",
+    "react-native-mock": "~0.2.5",
+    "react-test-renderer": "~15.4.2",
+    "remote-redux-devtools": "^0.5.7",
+    "rimraf": "^2.5.2"
+  }
+}
