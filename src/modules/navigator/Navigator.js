@@ -1,43 +1,28 @@
-import { Platform } from 'react-native';
-import { TabNavigator, StackNavigator } from 'react-navigation';
+import React from 'react';
+import { StackNavigator, DrawerNavigator } from 'react-navigation';
 
-import CounterViewContainer from '../counter/CounterViewContainer';
-import ColorViewContainer from '../colors/ColorViewContainer';
+import MapViewContainer from '../../scenes/map/MapViewContainer';
+import CustomDrawerContentComponent from '../../components/CustomDrawerContentComponent';
 
-const headerColor = '#39babd';
-const activeColor = 'white';
+import defaultHeaderConfig from './defaultHeaderConfig';
 
-// TabNavigator is nested inside StackNavigator
-export const MainScreenNavigator = TabNavigator({
-  Counter: { screen: CounterViewContainer },
-  Color: { screen: ColorViewContainer }
+
+const MapNavigator = StackNavigator({
+  Map: {
+    screen: MapViewContainer,
+  }
 }, {
-  tabBarOptions: {
-    ...Platform.select({
-      android: {
-        activeTintColor: activeColor,
-        indicatorStyle: { backgroundColor: activeColor },
-        style: { backgroundColor: headerColor }
-      }
-    })
+  navigationOptions: {
+    title: 'Map',
+    header: (navigation, defaultHeader) => (defaultHeaderConfig(navigation))
   }
 });
 
-MainScreenNavigator.navigationOptions = {
-  title: 'Pepperoni App Template',
-  header: {
-    titleStyle: { color: 'white' },
-    style: {
-      backgroundColor: headerColor,
-      elevation: 0 // disable header elevation when TabNavigator visible
-    }
-  }
-};
-
-// Root navigator is a StackNavigator
-const AppNavigator = StackNavigator({
-  Home: { screen: MainScreenNavigator },
-  InfiniteColorStack: { screen: ColorViewContainer }
+const AppNavigator = DrawerNavigator({
+  Map: { screen: MapNavigator },
+}, {
+  drawerWidth: 260,
+  contentComponent: CustomDrawerContentComponent
 });
 
 export default AppNavigator;

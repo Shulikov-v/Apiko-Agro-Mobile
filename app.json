@@ -1,4 +1,5 @@
 {
-  "name": "ApikoAgroMobile",
-  "displayName": "ApikoAgroMobile"
+  "expo": {
+    "sdkVersion": "15.0.0"
+  }
 }

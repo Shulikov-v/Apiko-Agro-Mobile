@@ -1,18 +1,17 @@
 import { AsyncStorage } from 'react-native';
-import { fromJS } from 'immutable';
 const STATE_STORAGE_KEY = 'ApikoAgroMobileAppState:Latest';
 
 export async function resetSnapshot() {
   const state = await rehydrate();
   if (state) {
-    return fromJS(state);
+    return state;
   }
 
   return null;
 }
 
 export async function saveSnapshot(state) {
-  await persist(state.toJS());
+  await persist(state);
 }
 
 export async function clearSnapshot() {
@@ -40,9 +39,7 @@ async function persist(state) {
 async function rehydrate() {
   try {
     const state = await AsyncStorage.getItem(STATE_STORAGE_KEY);
-    return state
-      ? JSON.parse(state)
-      : null;
+    return state || null;
   } catch (e) {
     console.error('Error reading persisted application state', e);
     return null;
