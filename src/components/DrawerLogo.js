@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Image, Dimensions, StyleSheet } from 'react-native';
 
-import normalize from '../services/normalizeText';
+import normalize from '../utils/normalizeText';
 import colors from '../styles/common/colors';
 
 const deviceScreen = Dimensions.get('window');
