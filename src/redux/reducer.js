@@ -1,14 +1,19 @@
 import { combineReducers } from 'redux';
 
+import OrganizationReducer from '../scenes/organization/OrganizationState';
+import LocalitiesReducer from '../scenes/localities/LocalitiesState';
+
 import NavigatorStateReducer from '../modules/navigator/NavigatorState';
 import SessionStateReducer, { RESET_STATE } from '../modules/session/SessionState';
 import AuthorizationReducer from '../scenes/authorization/AuthorizationState';
 
 const appReducer = combineReducers({
-  // Navigator states
-  navigatorState: NavigatorStateReducer,
+  organization: OrganizationReducer,
+  localities: LocalitiesReducer,
+
   auth: AuthorizationReducer,
-  session: SessionStateReducer
+  session: SessionStateReducer,
+  navigatorState: NavigatorStateReducer
 });
 
 export default (state, action) => {

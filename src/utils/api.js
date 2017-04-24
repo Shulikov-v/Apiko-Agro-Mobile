@@ -132,7 +132,7 @@ function getRequestHeaders(body, token) {
     : { 'Accept': 'application/json' };
 
   if (token) {
-    return { ...headers, Authorization: token };
+    return { ...headers, Authorization: `Bearer ${token}` };
   }
 
   return headers;
