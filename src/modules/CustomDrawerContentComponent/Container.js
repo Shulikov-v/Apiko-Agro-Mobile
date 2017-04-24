@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { compose } from 'recompose';
-import { NavigationActions } from 'react-navigation';
+
+import { signOut } from '../../scenes/authorization/AuthorizationState';
 
 import View from './View';
 
@@ -11,7 +11,7 @@ const enhance = compose(
     null,
     dispatch => {
       return {
-        navigate: bindActionCreators(NavigationActions.navigate, dispatch)
+        signOut: signOut(dispatch)
       };
     }
   ),

@@ -1,36 +1,24 @@
 import React from 'react';
 import { StackNavigator, DrawerNavigator, TabNavigator } from 'react-navigation';
 
-import CustomDrawerContentComponent from '../../components/CustomDrawerContentComponent/Container';
-import MapViewContainer from '../../scenes/map/MapViewContainer';
-import OrganizationContainer from '../../scenes/organization/OrganizationContainer';
+import SignIn from '../../scenes/authorization/SignIn';
+import SignUp from '../../scenes/authorization/SignUp';
 import * as dictionaries from '../../scenes/dictionaries';
+import MapViewContainer from '../../scenes/map/MapViewContainer';
 import ProfileContainer from '../../scenes/profile/ProfileContainer';
+import OrganizationContainer from '../../scenes/organization/OrganizationContainer';
+import CustomDrawerContentComponent from '../CustomDrawerContentComponent/Container';
 
-import defaultHeaderConfig from './defaultHeaderConfig';
-
+import { getAuthenticationToken } from '../../utils/authentication';
+import getNavigationOptionsByScene from './getNavigationOptionsByScene';
 
 const MapNavigator = StackNavigator({
-  Map: {
-    screen: MapViewContainer,
-  }
-}, {
-  navigationOptions: {
-    title: 'Map',
-    header: (navigation, defaultHeader) => (defaultHeaderConfig(navigation))
-  }
-});
+  Map: { screen: MapViewContainer }
+}, getNavigationOptionsByScene('Map'));
 
 const OrganizationNavigator = StackNavigator({
-  OrganizationPage: {
-    screen: OrganizationContainer,
-  }
-}, {
-  navigationOptions: {
-    title: 'Organization',
-    header: (navigation, defaultHeader) => (defaultHeaderConfig(navigation))
-  }
-});
+  OrganizationPage: { screen: OrganizationContainer }
+}, getNavigationOptionsByScene('Organization'));
 
 const TabNavigatorContainer = TabNavigator({
   Areas: { screen: dictionaries.Areas },
@@ -49,23 +37,13 @@ const TabNavigatorContainer = TabNavigator({
 
 const DictionariesNavigator = StackNavigator({
   DictionariesPage: { screen: TabNavigatorContainer }
-}, {
-  navigationOptions: {
-    title: 'Dictionaries',
-    header: (navigation, defaultHeader) => (defaultHeaderConfig(navigation))
-  }
-});
+}, getNavigationOptionsByScene('Dictionaries'));
 
 const ProfileNavigator = StackNavigator({
   ProfilePage: { screen: ProfileContainer }
-}, {
-  navigationOptions: {
-    title: 'Profile',
-    header: (navigation, defaultHeader) => (defaultHeaderConfig(navigation))
-  }
-});
+}, getNavigationOptionsByScene('Profile'));
 
-const AppNavigator = DrawerNavigator({
+const MainDrawer = DrawerNavigator({
   Map: { screen: MapNavigator },
   Organization: { screen: OrganizationNavigator },
   Dictionaries: { screen: DictionariesNavigator },
@@ -73,6 +51,19 @@ const AppNavigator = DrawerNavigator({
 }, {
   drawerWidth: 260,
   contentComponent: CustomDrawerContentComponent
+});
+
+const AuthNavigator = StackNavigator({
+  SignIn: { screen: SignIn },
+  SignUp: { screen: SignUp }
+}, { ...getNavigationOptionsByScene('Apiko Agro'), headerMode: 'none' });
+
+const AppNavigator = StackNavigator({
+  MainDrawer: { screen: MainDrawer },
+  Authorization: { screen: AuthNavigator }
+}, {
+  initialRouteName: getAuthenticationToken()._65 ? 'MainDrawer' : 'Authorization',
+  headerMode: 'none',
 });
 
 export default AppNavigator;

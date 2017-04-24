@@ -1,6 +1,6 @@
+import React from 'react';
 import { MapView }  from 'expo';
-import React, { PropTypes } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View } from 'react-native';
 
 import styles from './MapViewStyles';
 
@@ -18,9 +18,7 @@ const Map = () => (
   </View>
 );
 
-Map.propTypes = {
-  navigate: PropTypes.func.isRequired
-};
+Map.propTypes = { };
 
 
 export default Map;

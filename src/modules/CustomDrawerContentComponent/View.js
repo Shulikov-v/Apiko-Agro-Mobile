@@ -2,7 +2,8 @@ import React from 'react';
 import { View } from 'react-native';
 import { List, Divider } from 'react-native-elements';
 
-import DrawerLogo from '../DrawerLogo';
+
+import DrawerLogo from '../../components/DrawerLogo';
 import scenes from '../../constants/scenesKeys';
 
 import styles from '../../styles/NavigationDrawerStyles';
@@ -21,6 +22,7 @@ const mainLinksBlock = [
   scenes.DICTIONARIES
 ];
 const profileLink = scenes.PROFILE;
+const exitLink = scenes.SIGN_IN;
 
 const ProfilePageLink = ({ navigation }) => getLinkItem(
   getSceneTitle(profileLink),
@@ -28,10 +30,10 @@ const ProfilePageLink = ({ navigation }) => getLinkItem(
   () => goToScene(navigation, profileLink)
 );
 
-const ExitLink = () => getLinkItem(
+const ExitLink = ({ signOut }) => getLinkItem(
   'Exit',
-  'exit-to-app',
-  () => console.log('Exit')
+  getSceneIconName(exitLink),
+  () => signOut()
 );
 
 const renderLinkToScene = navigation => (sceneKey, i) => (
@@ -44,7 +46,7 @@ const renderLinkToScene = navigation => (sceneKey, i) => (
   </View>
 );
 
-const CustomDrawerContentComponent = ({ navigation }) => (
+const CustomDrawerContentComponent = ({ navigation, signOut }) => (
   <View style={styles.rootStyle}>
     <DrawerLogo />
 
@@ -55,8 +57,12 @@ const CustomDrawerContentComponent = ({ navigation }) => (
     <Divider />
 
     <InviteParticipant />
-    <ProfilePageLink navigation={navigation}/>
-    <ExitLink />
+    <ProfilePageLink
+      navigation={navigation}
+    />
+    <ExitLink
+      signOut={signOut}
+    />
   </View>
 );
 

@@ -1,4 +1,6 @@
-let configuration = {};
+let configuration = {
+  API_ROOT: 'https://apiko-agro.herokuapp.com',
+};
 
 export function setConfiguration(name, value) {
   configuration[name] = value;
@@ -15,9 +17,9 @@ export function unsetConfiguration(name) {
 
 export function getConfiguration(key) {
   // TODO
-  if (!configuration.has(key)) {
+  if (!configuration[key]) {
     throw new Error('Undefined configuration key: ' + key);
   }
 
-  return configuration.get(key);
+  return configuration[key];
 }

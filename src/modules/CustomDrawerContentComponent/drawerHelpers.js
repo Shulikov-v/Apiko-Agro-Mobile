@@ -23,6 +23,10 @@ const sceneOptionsMap = {
     title: 'Profile',
     icon: 'account-circle',
   },
+  [scenes.SIGN_IN]: {
+    title: 'Authorization',
+    icon: 'exit-to-app',
+  }
 };
 
 const getSceneTitle = sceneKey => sceneOptionsMap[sceneKey].title;

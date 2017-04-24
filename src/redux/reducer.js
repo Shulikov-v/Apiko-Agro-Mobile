@@ -2,11 +2,12 @@ import { combineReducers } from 'redux';
 
 import NavigatorStateReducer from '../modules/navigator/NavigatorState';
 import SessionStateReducer, { RESET_STATE } from '../modules/session/SessionState';
+import AuthorizationReducer from '../scenes/authorization/AuthorizationState';
 
 const appReducer = combineReducers({
   // Navigator states
   navigatorState: NavigatorStateReducer,
-
+  auth: AuthorizationReducer,
   session: SessionStateReducer
 });
 

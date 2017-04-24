@@ -3,14 +3,8 @@ import HttpError from 'standard-http-error';
 import { getConfiguration } from '../utils/configuration';
 import { getAuthenticationToken } from '../utils/authentication';
 
-const EventEmitter = require('event-emitter');
-
 const TIMEOUT = 6000;
 
-/**
- * All HTTP errors are emitted on this channel for interested listeners
- */
-export const errors = new EventEmitter();
 
 /**
  * GET a path relative to API root url.
@@ -30,6 +24,7 @@ export async function get(path, suppressRedBox) {
  * @returns {Promise}  of response body
  */
 export async function post(path, body, suppressRedBox) {
+  console.log('post', path, body);
   return bodyOf(request('post', path, body, suppressRedBox));
 }
 
@@ -91,7 +86,6 @@ export function url(path) {
  * Constructs and fires a HTTP request
  */
 async function sendRequest(method, path, body) {
-
   try {
     const endpoint = url(path);
     const token = await getAuthenticationToken();
@@ -117,13 +111,7 @@ async function handleResponse(path, response) {
     // promise flow control to interpret error responses as failures
     if (status >= 400) {
       const message = await getErrorMessageSafely(response);
-      const error = new HttpError(status, message);
-
-      // emit events on error channel, one for status-specific errors and other for all errors
-      errors.emit(status.toString(), { path, message: error.message });
-      errors.emit('*', { path, message: error.message }, status);
-
-      throw error;
+      throw new HttpError(status, message);
     }
 
     // parse response text

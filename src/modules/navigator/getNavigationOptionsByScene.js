@@ -20,4 +20,12 @@ const styles = StyleSheet.create({
   }
 });
 
-export default defaultHeaderConfig;
+
+export default function getNavigationOptionsByScene(sceneTitle) {
+  return {
+    navigationOptions: {
+      title: sceneTitle,
+      header: (navigation, defaultHeader) => (defaultHeaderConfig(navigation))
+    }
+  }
+}

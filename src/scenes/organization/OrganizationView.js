@@ -1,5 +1,5 @@
-import React, { PropTypes } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import React from 'react';
+import { View, Text } from 'react-native';
 
 const OrganizationView = () => (
   <View>
@@ -7,9 +7,7 @@ const OrganizationView = () => (
   </View>
 );
 
-OrganizationView.propTypes = {
-  navigate: PropTypes.func.isRequired
-};
+OrganizationView.propTypes = { };
 
 
 export default OrganizationView;
