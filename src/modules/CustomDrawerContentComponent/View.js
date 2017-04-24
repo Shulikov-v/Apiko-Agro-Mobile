@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, Share } from 'react-native';
 import { List, Divider } from 'react-native-elements';
 
 
@@ -7,7 +7,7 @@ import DrawerLogo from '../../components/DrawerLogo';
 import scenes from '../../constants/scenesKeys';
 
 import styles from '../../styles/NavigationDrawerStyles';
-import InviteParticipant from './InviteParticipant';
+// import InviteParticipant from './InviteParticipant';
 
 import {
   goToScene,
@@ -23,6 +23,12 @@ const mainLinksBlock = [
 ];
 const profileLink = scenes.PROFILE;
 const exitLink = scenes.SIGN_IN;
+
+const InviteParticipant = () => getLinkItem(
+  'Invite participant',
+  'send',
+  () => Share.share({ message: 'Invite participant.' })
+);
 
 const ProfilePageLink = ({ navigation }) => getLinkItem(
   getSceneTitle(profileLink),
