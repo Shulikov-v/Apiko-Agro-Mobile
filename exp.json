@@ -1,0 +1,10 @@
+{
+  "name": "Apiko Agro",
+  "icon": "https://s3.amazonaws.com/exp-us-standard/rnplay/app-icon.png",
+  "version": "0.1.0",
+  "slug": "apikoagro",
+  "sdkVersion": "15.0.0",
+  "android": {
+    "package": "com.apikoagro.mobile"
+  }
+}
