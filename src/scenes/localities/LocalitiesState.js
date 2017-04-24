@@ -1,12 +1,9 @@
-import { ToastAndroid } from 'react-native';
-import { NavigationActions } from 'react-navigation';
-
 import { get } from '../../utils/api';
 import apiAddresses from '../../constants/apiAddresses';
 
 
 // Initial State
-const initialState = null;
+const initialState = [];
 
 // Actions
 const INIT_LOCALITIES = 'INIT_LOCALITIES';

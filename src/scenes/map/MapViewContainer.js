@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import { getOrganizationInfo } from '../organization/OrganizationState';
 import { getLocalities } from '../localities/LocalitiesState';
+import { getUserProfile } from '../profile/ProfileState';
 
 import Map from './MapView';
 
@@ -12,12 +13,14 @@ const enhance = compose(
     {
       initOrganization: getOrganizationInfo,
       initLocalities: getLocalities,
+      initUser: getUserProfile,
     },
   ),
   lifecycle({
     componentDidMount() {
       this.props.initOrganization();
       this.props.initLocalities();
+      this.props.initUser();
     }
   })
 );

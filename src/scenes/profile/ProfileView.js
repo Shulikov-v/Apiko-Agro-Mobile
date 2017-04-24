@@ -1,9 +1,11 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-const ProfileView = () => (
+const ProfileView = ({ email, fullName }) => (
   <View>
     <Text>Profile page</Text>
+    <Text>{email}</Text>
+    <Text>{fullName}</Text>
   </View>
 );
 
