@@ -34,6 +34,7 @@
     "react": "~15.4.0",
     "react-native": "0.42.3",
     "react-native-elements": "^0.11.1",
+    "react-native-modal": "^2.3.2",
     "react-native-progress": "^3.2.0",
     "react-native-simple-store": "^1.1.0",
     "react-navigation": "^1.0.0-beta.7",
@@ -41,6 +42,7 @@
     "recompose": "^0.23.1",
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0",
+    "reselect": "^3.0.0",
     "standard-http-error": "^2.0.0"
   },
   "devDependencies": {

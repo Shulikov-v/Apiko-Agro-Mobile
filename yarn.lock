@@ -4237,6 +4237,10 @@ react-deep-force-update@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/react-deep-force-update/-/react-deep-force-update-1.0.1.tgz#f911b5be1d2a6fe387507dd6e9a767aa2924b4c7"
 
+react-native-animatable@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/react-native-animatable/-/react-native-animatable-1.1.1.tgz#00ddc72985f62f62a11a505abb1a06e77a92cd8a"
+
 react-native-dismiss-keyboard@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/react-native-dismiss-keyboard/-/react-native-dismiss-keyboard-1.0.0.tgz#32886242b3f2317e121f3aeb9b0a585e2b879b49"
@@ -4269,6 +4273,12 @@ react-native-elements@^0.11.1:
 "react-native-maps@https://github.com/exponent/react-native-maps/archive/v0.12.2-exp.1.tar.gz":
   version "0.12.2"
   resolved "https://github.com/exponent/react-native-maps/archive/v0.12.2-exp.1.tar.gz#1984bfe5a8a341dd3b44ad565cfcd1b25a5c2b03"
+
+react-native-modal@^2.3.2:
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/react-native-modal/-/react-native-modal-2.3.2.tgz#d616355e312d378a9dcd99de5565523b7b5b4c84"
+  dependencies:
+    react-native-animatable "^1.1.1"
 
 react-native-progress@^3.2.0:
   version "3.2.0"
@@ -4726,6 +4736,10 @@ require-main-filename@^1.0.1:
 reqwest@2.0.5:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/reqwest/-/reqwest-2.0.5.tgz#00fb15ac4918c419ca82b43f24c78882e66039a1"
+
+reselect@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/reselect/-/reselect-3.0.0.tgz#b2e35977f03048700028eaee3a8c0639e40e8f35"
 
 resolve@1.1.7:
   version "1.1.7"

@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { View, StyleSheet, StatusBar, Text, ActivityIndicator, ToolbarAndroid } from 'react-native';
+import { View, StyleSheet, StatusBar, ActivityIndicator } from 'react-native';
 
 import NavigatorViewContainer from './modules/navigator/NavigatorViewContainer';
 

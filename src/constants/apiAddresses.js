@@ -11,7 +11,7 @@ export default {
   LOCALITIES: '/api/v1/localities',
   // POLYGONS: '/api/v1/polygons',
   // LANDLORDS: '/api/v1/landlords',
-  // FIELDS: '/api/v1/fields/',
+  FIELDS: '/api/v1/fields/',
   // AREAS: '/api/v1/areas',
   // DEPARTMENTS: '/api/v1/departments',
   // CONTRACT: '/api/v1/contracts',

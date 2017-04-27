@@ -1,22 +1,62 @@
 import React from 'react';
+import R from 'ramda';
 import { MapView }  from 'expo';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
+import Modal from 'react-native-modal';
+import { Card, Button } from 'react-native-elements';
 
 import styles from './MapViewStyles';
 
-const Map = () => (
-  <View style ={styles.container}>
-    <MapView
-      style={styles.map}
-      region={{
-        latitude: 37.78825,
-        longitude: -122.4324,
-        latitudeDelta: 0.015,
-        longitudeDelta: 0.0121
-      }}
-    />
-  </View>
-);
+const Map = ({
+               initialRegion,
+               fields,
+               getFieldInfoById,
+               getColorForField,
+               isModalVisible,
+               showModal,
+               activeField,
+               setActiveField
+}) => {
+
+  return (
+    <View style={styles.container}>
+      <MapView
+        style={styles.map}
+        initialRegion={initialRegion}
+        mapType='terrain'
+      >
+        {!R.isEmpty(fields) ?
+          fields.map((field, i) => (
+            <MapView.Polygon
+              key={i}
+              coordinates={field.coordinates.map(cord => ({ latitude: cord.lat, longitude: cord.lng }))}
+              strokeColor={getColorForField(field.localityId, 'stroke')}
+              fillColor={getColorForField(field.localityId, 'fill')}
+              onPress={() => {
+                setActiveField(getFieldInfoById(field._id));
+                showModal(true);
+              }}
+            />
+          ))
+          : null}
+      </MapView>
+      <Modal isVisible={isModalVisible} backdropOpacity={0.2} style={styles.bottomModal}>
+        <Card>
+          <Text>Name: {activeField.name}</Text>
+          <Text>Square: {activeField.square}</Text>
+          <Text>LocalityName: {activeField.localityName}</Text>
+            <Button
+              title='Close'
+              onPress={() => {
+                showModal(false);
+                setActiveField({ name: '', square: 0, localityName: 0 });
+              }}
+            />
+        </Card>
+      </Modal>
+    </View>
+  )
+};
 
 Map.propTypes = { };
 
