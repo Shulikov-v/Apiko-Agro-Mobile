@@ -1,0 +1,305 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Organization View renders correctly 1`] = `
+<View>
+  <View
+    style={
+      Object {
+        "marginTop": 10,
+        "padding": 15,
+      }
+    }
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Array [
+          Object {},
+          undefined,
+          undefined,
+          Object {
+            "fontSize": 32.199999999999996,
+          },
+          undefined,
+          undefined,
+          undefined,
+          Object {},
+          undefined,
+          undefined,
+          undefined,
+        ]
+      }
+    >
+      Organization
+    </Text>
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "backgroundColor": "white",
+          "borderColor": "#e1e8ee",
+          "borderWidth": 1,
+          "margin": 15,
+          "marginBottom": 0,
+          "padding": 15,
+          "shadowColor": "rgba(0,0,0, .2)",
+          "shadowOffset": Object {
+            "height": 0,
+            "width": 0,
+          },
+          "shadowOpacity": 1,
+          "shadowRadius": 1,
+        },
+        undefined,
+        undefined,
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "backgroundColor": "transparent",
+          },
+          undefined,
+          undefined,
+        ]
+      }
+    >
+      <View>
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Array [
+              Object {},
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              Array [
+                Object {
+                  "color": "#43484d",
+                  "fontSize": 16.099999999999998,
+                  "fontWeight": "bold",
+                  "marginBottom": 15,
+                  "textAlign": "center",
+                },
+                undefined,
+                undefined,
+                undefined,
+              ],
+            ]
+          }
+        >
+          Населені пункти
+        </Text>
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "#e1e8ee",
+                "height": 1,
+              },
+              Array [
+                Object {
+                  "marginBottom": 15,
+                },
+                undefined,
+              ],
+            ]
+          }
+        />
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "backgroundColor": "#ffffff",
+              "borderBottomWidth": 1,
+              "borderColor": "#cbd2d9",
+              "borderTopWidth": 1,
+              "marginTop": 20,
+            },
+            Object {
+              "marginTop": 0,
+            },
+          ]
+        }
+      >
+        <View
+          onLongPress={undefined}
+          onPress={undefined}
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderBottomColor": "#ededed",
+                "borderBottomWidth": 1,
+                "paddingBottom": 10,
+                "paddingRight": 10,
+                "paddingTop": 10,
+              },
+              undefined,
+            ]
+          }
+          underlayColor="white"
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "flexDirection": "row",
+                  "marginLeft": 10,
+                },
+                undefined,
+              ]
+            }
+          >
+            <View
+              style={
+                Object {
+                  "flex": 1,
+                  "justifyContent": "center",
+                }
+              }
+            >
+              <View
+                style={undefined}
+              >
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  ellipsizeMode="tail"
+                  style={
+                    Array [
+                      Object {},
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      Array [
+                        Object {
+                          "color": "#43484d",
+                          "fontSize": 16.099999999999998,
+                        },
+                        Object {
+                          "marginLeft": 10,
+                        },
+                        undefined,
+                        undefined,
+                      ],
+                    ]
+                  }
+                >
+                  loc1
+                </Text>
+              </View>
+              <View
+                style={undefined}
+              >
+                <View />
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          onLongPress={undefined}
+          onPress={undefined}
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderBottomColor": "#ededed",
+                "borderBottomWidth": 1,
+                "paddingBottom": 10,
+                "paddingRight": 10,
+                "paddingTop": 10,
+              },
+              undefined,
+            ]
+          }
+          underlayColor="white"
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "flexDirection": "row",
+                  "marginLeft": 10,
+                },
+                undefined,
+              ]
+            }
+          >
+            <View
+              style={
+                Object {
+                  "flex": 1,
+                  "justifyContent": "center",
+                }
+              }
+            >
+              <View
+                style={undefined}
+              >
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  ellipsizeMode="tail"
+                  style={
+                    Array [
+                      Object {},
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      Array [
+                        Object {
+                          "color": "#43484d",
+                          "fontSize": 16.099999999999998,
+                        },
+                        Object {
+                          "marginLeft": 10,
+                        },
+                        undefined,
+                        undefined,
+                      ],
+                    ]
+                  }
+                >
+                  loc2
+                </Text>
+              </View>
+              <View
+                style={undefined}
+              >
+                <View />
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;

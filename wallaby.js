@@ -10,13 +10,13 @@ module.exports = function (wallaby) {
         files: [
             'src/**/*.js',
             'package.json',
-            '!src/**/__specs__/*.js',
-            '!src/**/*.spec.js',
+            '!src/**/__tests__/*.js',
+            '!src/**/*.test.js',
         ],
 
         tests: [
-            'src/**/__specs__/*.js',
-            'src/**/*.spec.js',
+            'src/**/__tests__/*.js',
+            'src/**/*.test.js',
         ],
 
         env: {
@@ -34,7 +34,6 @@ module.exports = function (wallaby) {
                 plugins: [
                     'transform-flow-strip-types',
                     'transform-object-rest-spread',
-                    'transform-async-to-generator',
                 ],
             }),
         },
