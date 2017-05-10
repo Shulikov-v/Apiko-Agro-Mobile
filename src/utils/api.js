@@ -6,6 +6,8 @@ import { getAuthenticationToken } from '../utils/authentication';
 const TIMEOUT = 6000;
 
 
+export const query = data => `?${Object.keys(data).map(key => `${key}=${data[key]}`).join('&')}`;
+
 /**
  * GET a path relative to API root url.
  * @param {String}  path Relative path to the configured API endpoint

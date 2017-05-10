@@ -6,6 +6,7 @@ import LocalitiesReducer from '../scenes/localities/LocalitiesState';
 import ProfileReducer from '../scenes/profile/ProfileState';
 import FieldsReducer from '../scenes/fields/FieldsState';
 import MapReducer from '../scenes/map/MapViewState';
+import PolygonReducer from '../scenes/polygons/PolygonsState';
 
 import NavigatorStateReducer from '../modules/navigator/NavigatorState';
 import SessionStateReducer, { RESET_STATE } from '../modules/session/SessionState';
@@ -17,6 +18,7 @@ const appReducer = combineReducers({
   localities: LocalitiesReducer,
   profile: ProfileReducer,
   fields: FieldsReducer,
+  polygons: PolygonReducer,
   mapFilter: MapReducer,
 
   auth: AuthorizationReducer,

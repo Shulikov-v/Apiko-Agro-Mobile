@@ -8,6 +8,7 @@ import { getDepartments } from '../departments/DepartmentsState';
 import { getLocalities } from '../localities/LocalitiesState';
 import { getUserProfile } from '../profile/ProfileState';
 import { getFields } from '../fields/FieldsState';
+import { getPolygons } from '../polygons/PolygonsState';
 
 import Map from './MapView';
 
@@ -19,16 +20,23 @@ const initialRegion = {
 };
 
 const localitiesSelector = createSelector([ state => state.localities ],
-  localities => ({
-    localities: localities.map(loc => R.pick(['_id', 'name'], loc))
-  }));
+  localities => localities.map(loc => R.pick(['_id', 'name'], loc)));
+
+const polygonsSelector = createSelector([
+  state => state.polygons,
+  state => state.mapFilter.activeLocality,
+],
+  (polygons, activeLocality) => {
+  return polygons.filter(polygon => polygon.localityId === activeLocality);
+  });
 
 const mapStateToProps = state => ({
   fields: state.fields,
   organization: state.organization,
   mapFilter: state.mapFilter,
   // needed for `getFieldInfoById` handler
-  localities: localitiesSelector(state)
+  localities: localitiesSelector(state),
+  polygons: polygonsSelector(state),
 });
 
 const mapDispatchToProps = {
@@ -37,13 +45,22 @@ const mapDispatchToProps = {
   initLocalities: getLocalities,
   initUser: getUserProfile,
   initFields: getFields,
+  initPolygons: getPolygons,
 };
 
 const enhance = compose(
   connect( mapStateToProps, mapDispatchToProps ),
   defaultProps({ initialRegion }),
   withState('isModalVisible', 'showModal', false),
+  withState('isPolygonModalVisible', 'showPolygonModal', false),
   withState('activeField', 'setActiveField', { name: '', square: 0, localityName: 0 }),
+  withState('activePolygon',
+    'setActivePolygon',
+    {
+      cadastralNumber: '',
+      square: '',
+      localityName: ''
+    }),
   withHandlers({
     getFieldInfoById: ({ fields, localities }) => id => {
       if(R.isEmpty(fields) || R.isEmpty(localities)) return;
@@ -53,6 +70,16 @@ const enhance = compose(
 
       return {
         ...R.pick(['name', 'square'], field),
+        localityName: locality.name
+      };
+    },
+    getPolygonInfoById: ({ polygons, localities }) => id => {
+      if(R.isEmpty(polygons) || R.isEmpty(localities)) return;
+      const polygon = polygons.find(polygon => polygon._id === id);
+      const locality = localities.find(loc => loc._id === polygon.localityId);
+
+      return {
+        ...R.pick(['cadastralNumber', 'square'], polygon),
         localityName: locality.name
       };
     },
@@ -76,6 +103,13 @@ const enhance = compose(
       this.props.initLocalities();
       this.props.initFields();
       this.props.initUser();
+    },
+    componentWillReceiveProps({ mapFilter }) {
+      const { activeLocality } = mapFilter;
+
+      if(activeLocality && activeLocality !== this.props.mapFilter.activeLocality) {
+        this.props.initPolygons(mapFilter.activeLocality);
+      }
     }
   })
 );
