@@ -1,7 +1,7 @@
 export default {
   SIGN_IN: '/api/v1/account/login',
   SIGN_UP: '/api/v1/account',
-  // INVITE_USER: '/api/v1/users/invite',
+  INVITE_LINK: '/api/v1/users/invite_link',
   // AMAZONS3: '/api/v1/amazonS3/',
   //
   // ACCOUNT: '/api/v1/account',

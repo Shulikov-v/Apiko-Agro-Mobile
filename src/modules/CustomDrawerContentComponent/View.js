@@ -2,12 +2,14 @@ import React from 'react';
 import { View, Share } from 'react-native';
 import { List, Divider } from 'react-native-elements';
 
+import { get } from '../../utils/api';
+import apiAdresses from '../../constants/apiAddresses';
+
 
 import DrawerLogo from '../../components/DrawerLogo';
 import scenes from '../../constants/scenesKeys';
 
 import styles from '../../styles/NavigationDrawerStyles';
-// import InviteParticipant from './InviteParticipant';
 
 import {
   goToScene,
@@ -27,7 +29,14 @@ const exitLink = scenes.SIGN_IN;
 const InviteParticipant = () => getLinkItem(
   'Invite participant',
   'send',
-  () => Share.share({ message: 'Invite participant.' })
+  async () => {
+    const body = await get(apiAdresses.INVITE_LINK);
+
+    Share.share({
+      message: `Ви можете зареєструватися перейшовши за посиланням: ${body.link}`,
+      title: 'Запрошення у додаток Apiko Agro',
+    })
+  }
 );
 
 const ProfilePageLink = ({ navigation }) => getLinkItem(

@@ -13,6 +13,7 @@ const TIMEOUT = 6000;
  * @returns {Promise} of response body
  */
 export async function get(path, suppressRedBox) {
+  console.log('get', path);
   return bodyOf(request('get', path, null, suppressRedBox));
 }
 
