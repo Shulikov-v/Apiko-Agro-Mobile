@@ -13,7 +13,6 @@ const Map = ({
                getFieldInfoById,
                getColorForField,
 
-
                // ActiveFieldModal
                activeField,
                setActiveField,
@@ -27,7 +26,8 @@ const Map = ({
       mapType='terrain'
     >
       {!R.isEmpty(fields) ?
-        fields.map((field, i) => (
+        fields.map((field, i) => {
+        return mapFilter.fields[field.localityId] ?
           <MapView.Polygon
             key={i}
             coordinates={field.coordinates.map(cord => ({latitude: cord.lat, longitude: cord.lng}))}
@@ -37,8 +37,8 @@ const Map = ({
               setActiveField(getFieldInfoById(field._id));
               showModal(true);
             }}
-          />
-        ))
+          /> : null;
+      })
         : null}
     </MapView>
     <ActiveFieldModal
