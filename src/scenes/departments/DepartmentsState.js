@@ -6,19 +6,18 @@ import apiAddresses from '../../constants/apiAddresses';
 const initialState = [];
 
 // Actions
-export const INIT_LOCALITIES = 'INIT_LOCALITIES';
+export const INIT_DEPARTMENTS = 'INIT_DEPARTMENTS';
 
 // Action creators
-const initLocalities = localities => ({ type: INIT_LOCALITIES, localities });
+const initDepartments = departments => ({ type: INIT_DEPARTMENTS, departments });
 
 // Thunks
-export function getLocalities() {
+export function getDepartments() {
   return async function(dispatch) {
     try {
-      const body = await get(apiAddresses.LOCALITIES);
-      const { localities } = body;
-      dispatch(initLocalities(localities));
-
+      const body = await get(apiAddresses.DEPARTMENTS);
+      const { departments } = body;
+      dispatch(initDepartments(departments));
 
     } catch(err) {
       console.log(err);
@@ -30,8 +29,8 @@ export function getLocalities() {
 // Reducer
 export default (state = initialState, action) => {
   switch (action.type) {
-    case INIT_LOCALITIES:
-      return action.localities;
+    case INIT_DEPARTMENTS:
+      return action.departments;
     default:
       return state;
   }

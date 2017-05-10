@@ -1,9 +1,10 @@
-import { compose, lifecycle, defaultProps, withHandlers, withState } from 'recompose';
+import R from 'ramda';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
-import R from 'ramda';
+import { compose, lifecycle, defaultProps, withHandlers, withState } from 'recompose';
 
 import { getOrganizationInfo } from '../organization/OrganizationState';
+import { getDepartments } from '../departments/DepartmentsState';
 import { getLocalities } from '../localities/LocalitiesState';
 import { getUserProfile } from '../profile/ProfileState';
 import { getFields } from '../fields/FieldsState';
@@ -17,32 +18,30 @@ const initialRegion = {
   longitudeDelta: 0.5
 };
 
-const mapStateToProps = createSelector([
-  state => state.fields,
-  state => state.localities,
-  state => state.organization,
-],
-  (fields, localities, organization) => {
-  return {
-    fields,
-    localities: localities.map(loc => R.pick(['_id', 'name'], loc)),
-    organization,
-  };
+const localitiesSelector = createSelector([ state => state.localities ],
+  localities => ({
+    localities: localities.map(loc => R.pick(['_id', 'name'], loc))
+  }));
+
+const mapStateToProps = state => ({
+  fields: state.fields,
+  organization: state.organization,
+  mapFilter: state.mapFilter,
+  // needed for `getFieldInfoById` handler
+  localities: localitiesSelector(state)
 });
 
+const mapDispatchToProps = {
+  initOrganization: getOrganizationInfo,
+  initDepartments: getDepartments,
+  initLocalities: getLocalities,
+  initUser: getUserProfile,
+  initFields: getFields,
+};
+
 const enhance = compose(
-  connect(
-    mapStateToProps,
-    {
-      initOrganization: getOrganizationInfo,
-      initLocalities: getLocalities,
-      initUser: getUserProfile,
-      initFields: getFields,
-    },
-  ),
-  defaultProps({
-    initialRegion
-  }),
+  connect( mapStateToProps, mapDispatchToProps ),
+  defaultProps({ initialRegion }),
   withState('isModalVisible', 'showModal', false),
   withState('activeField', 'setActiveField', { name: '', square: 0, localityName: 0 }),
   withHandlers({
@@ -73,9 +72,10 @@ const enhance = compose(
   lifecycle({
     componentDidMount() {
       this.props.initOrganization();
+      this.props.initDepartments();
       this.props.initLocalities();
-      this.props.initUser();
       this.props.initFields();
+      this.props.initUser();
     }
   })
 );

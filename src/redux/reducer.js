@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
 
 import OrganizationReducer from '../scenes/organization/OrganizationState';
+import DepartmentsReducer from '../scenes/departments/DepartmentsState';
 import LocalitiesReducer from '../scenes/localities/LocalitiesState';
 import ProfileReducer from '../scenes/profile/ProfileState';
 import FieldsReducer from '../scenes/fields/FieldsState';
+import MapReducer from '../scenes/map/MapViewState';
 
 import NavigatorStateReducer from '../modules/navigator/NavigatorState';
 import SessionStateReducer, { RESET_STATE } from '../modules/session/SessionState';
@@ -11,9 +13,11 @@ import AuthorizationReducer from '../scenes/authorization/AuthorizationState';
 
 const appReducer = combineReducers({
   organization: OrganizationReducer,
+  departments: DepartmentsReducer,
   localities: LocalitiesReducer,
   profile: ProfileReducer,
   fields: FieldsReducer,
+  mapFilter: MapReducer,
 
   auth: AuthorizationReducer,
   session: SessionStateReducer,
