@@ -6,6 +6,10 @@ import { BackAndroid } from 'react-native';
 import store from './src/redux/store';
 import AppViewContainer from './src/AppViewContainer';
 
+import ukTranslation from './src/localization/uk.json';
+import { setLocalization } from 'react-native-translate';
+
+setLocalization(ukTranslation);
 
 export default class App extends React.Component {
   componentWillMount() {

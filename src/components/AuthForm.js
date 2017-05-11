@@ -10,6 +10,8 @@ import showError from '../utils/showErrorAlert';
 import styles from '../styles/AuthFormStyles';
 import colors from '../styles/common/colors';
 
+import { translate } from 'react-native-translate';
+
 const { SIGN_UP, SIGN_IN } = authFormTypes;
 
 class AuthForm extends Component {
@@ -92,54 +94,54 @@ class AuthForm extends Component {
         ) : (
           <View>
             <ValidInput
-              label="EMAIL"
+              label={translate('email')}
               onChangeText={this.onChangeInput('email')}
               validate={isValidEmail}
               value={email}
-              inputProps={{ placeholder: 'Type your email here' }}
-              errorText="Email is not valid"
+              inputProps={{ placeholder: translate('email_placeholder') }}
+              errorText={translate('invalid_email')}
             />
             {authFormType === SIGN_UP && (
               <ValidInput
-                label="NAME"
+                label={translate('name')}
                 onChangeText={this.onChangeInput('name')}
                 validate={R.complement(R.isEmpty)}
                 value={name}
-                inputProps={{ placeholder: 'Type your name here' }}
-                errorText="Name is required"
+                inputProps={{ placeholder: translate('name_placeholder') }}
+                errorText={translate('name_required')}
               />
             )}
             {authFormType === SIGN_UP && (
               <ValidInput
-                label="SURNAME"
+                label={translate('surname')}
                 onChangeText={this.onChangeInput('surname')}
                 validate={R.complement(R.isEmpty)}
                 value={surname}
-                inputProps={{ placeholder: 'Type your surname here' }}
-                errorText="Surname is required"
+                inputProps={{ placeholder: translate('surname_placeholder') }}
+                errorText={ translate('surname_required') }
               />
             )}
             <ValidInput
-              label="PASSWORD"
+              label={translate('password')}
               onChangeText={this.onChangeInput('password')}
               validate={isValidPassword}
               value={password}
-              inputProps={{ placeholder: 'Type your password here', secureTextEntry: true }}
-              errorText="Must have 6 or more characters"
+              inputProps={{ placeholder: translate('password_placeholder'), secureTextEntry: true }}
+              errorText={ translate('password_error') }
             />
             {authFormType === SIGN_UP && (
               <ValidInput
-                label="CONFIRM PASSWORD"
+                label={translate('password_confirm')}
                 onChangeText={this.onChangeInput('passwordConfirm')}
                 validate={R.equals(password.text)}
                 value={passwordConfirm}
-                inputProps={{ placeholder: 'Confirm password', secureTextEntry: true }}
-                errorText="Not equals to previous password"
+                inputProps={{ placeholder: translate('password_placeholder'), secureTextEntry: true }}
+                errorText={ translate('password_error_not_equal') }
               />
             )}
             <Button
               buttonStyle={styles.buttonStyle}
-              title={authFormType === SIGN_UP ? 'REGISTER' : 'LOGIN'}
+              title={authFormType === SIGN_UP ? translate('register') : translate('login')}
               onPress={this.onAuth}
               disabled={!this.isFormValid()}
               raised
@@ -151,8 +153,8 @@ class AuthForm extends Component {
             >
               <Text style={styles.linkTextStyle}>
                 {authFormType === SIGN_UP ?
-                  'Already a member? Login' :
-                  'No account yet? Create one'
+                  translate('sign_in') :
+                  translate('sign_up')
                 }
               </Text>
             </TouchableOpacity>

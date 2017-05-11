@@ -1,5 +1,6 @@
 import React from 'react';
 import { ListItem } from 'react-native-elements';
+import { translate } from 'react-native-translate';
 
 import colors from '../../styles/common/colors';
 import styles from '../../styles/NavigationDrawerStyles';
@@ -40,7 +41,7 @@ const goToScene = (navigation, sceneKey) => {
 const getLinkItem = (title, icon, onPress) => (
   <ListItem
     containerStyle={styles.linkStyle}
-    title={title}
+    title={translate(title)}
     titleStyle={styles.textStyle}
     leftIcon={{
       name: icon,

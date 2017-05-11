@@ -1134,7 +1134,7 @@ babel-runtime@^5.8.38:
   dependencies:
     core-js "^1.0.0"
 
-babel-runtime@^6.18.0, babel-runtime@^6.2.0, babel-runtime@^6.20.0, babel-runtime@^6.22.0, babel-runtime@^6.9.2:
+babel-runtime@^6.18.0, babel-runtime@^6.2.0, babel-runtime@^6.20.0, babel-runtime@^6.22.0, babel-runtime@^6.6.1, babel-runtime@^6.9.2:
   version "6.23.0"
   resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.23.0.tgz#0a9489f144de70efb3ce4300accdb329e2fc543b"
   dependencies:
@@ -4332,6 +4332,12 @@ react-native-tab-navigator@^0.3.3:
 react-native-tab-view@^0.0.57:
   version "0.0.57"
   resolved "https://registry.yarnpkg.com/react-native-tab-view/-/react-native-tab-view-0.0.57.tgz#715e2ea4100fa50168e134df3947dd76ebd55743"
+
+react-native-translate@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-translate/-/react-native-translate-0.0.1.tgz#ed2ae32e6415b045902f3e9eac36a17691809d29"
+  dependencies:
+    babel-runtime "^6.6.1"
 
 react-native-vector-icons@4.0.0:
   version "4.0.0"

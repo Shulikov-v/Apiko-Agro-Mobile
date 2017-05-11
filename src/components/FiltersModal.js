@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, View, ScrollView } from 'react-native';
 import Modal from 'react-native-modal';
 import { Card, Button, Text } from 'react-native-elements';
+import { translate } from 'react-native-translate';
 
 import FilterDepartmentList from './FilterDepartmentList';
 
@@ -23,7 +24,7 @@ const FiltersModal = ({
     <ScrollView showsVerticalScrollIndicator={false}>
       <Card>
         <View style={styles.topModalView}>
-          <Text h3>Відділки</Text>
+          <Text h3>{translate('departments')}</Text>
         </View>
         <FilterDepartmentList
           departments={departments}
@@ -32,7 +33,7 @@ const FiltersModal = ({
           mapFilter={mapFilter}
         />
         <Button
-          title='Close'
+          title={translate('close')}
           onPress={() => toggleModal()}
           buttonStyle={styles.topModalCloseButton}
         />

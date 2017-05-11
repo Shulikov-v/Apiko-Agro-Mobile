@@ -1,0 +1,40 @@
+{
+  "email": "Електронна пошта",
+  "invalid_email": "Некоректна електронна пошта",
+  "email_placeholder": "Введіть вашу пошту тут",
+  "name": "Ім'я",
+  "name_placeholder": "Введіть Ваше ім'я",
+  "name_required": "Це поле обов'язкове",
+  "surname": "Прізвище",
+  "surname_placeholder": "Введіть Ваше прізвище",
+  "surname_required": "Це поле обов'язкове",
+  "password": "Пароль",
+  "password_placeholder": "Введіть пароль тут",
+  "password_error": "Пароль повинен містити 6 і більше знаків",
+  "password_error_not_equal": "Паролі не співпадають",
+  "password_confirm": "Введіть пароль ще раз",
+  "login": "Увійти",
+  "register": "Зареєструватися",
+  "sign_in": "Вже зареєстровані? Увійдіть",
+  "sign_up": "Не маєте аккаунту? Зареєструйтеся",
+
+  "field_name": "Назва",
+  "square": "Площа",
+  "locality_name": "Поле",
+  "close": "Закрити",
+
+  "cadastral_number": "Кадастровий номер",
+
+  "departments": "Відділки",
+  "department": "Відділок",
+
+  "invite_participant": "Запросити учасника",
+  "share_message": "Ви можете зареєструватися перейшовши за посиланням",
+  "share_message_title": "Запрошення у додаток Apiko Agro",
+  "exit": "Вийти",
+  "Map": "Мапа",
+  "Organization": "Організація",
+  "Dictionaries": "Довідники",
+  "Profile": "Профіль",
+  "Apiko Agro": "Apiko Agro"
+}

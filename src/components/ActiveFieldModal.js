@@ -2,15 +2,16 @@ import React from 'react';
 import { StyleSheet, Text } from 'react-native';
 import Modal from 'react-native-modal';
 import { Card, Button } from 'react-native-elements';
+import { translate } from 'react-native-translate';
 
 const ActiveFieldModal = ({ isModalVisible, activeField, showModal, setActiveField }) => (
   <Modal isVisible={isModalVisible} backdropOpacity={0.2} style={styles.bottomModal}>
     <Card>
-      <Text>Name: {activeField.name}</Text>
-      <Text>Square: {activeField.square}</Text>
-      <Text>LocalityName: {activeField.localityName}</Text>
+      <Text>{translate('field_name')}: {activeField.name}</Text>
+      <Text>{translate('square')}: {activeField.square}</Text>
+      <Text>{translate('locality_name')}: {activeField.localityName}</Text>
       <Button
-        title='Close'
+        title={translate('close')}
         onPress={() => {
           showModal(false);
           setActiveField({ name: '', square: 0, localityName: 0 });
