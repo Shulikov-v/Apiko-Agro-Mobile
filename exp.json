@@ -1,10 +1,15 @@
 {
   "name": "Apiko Agro",
-  "icon": "http://i.imgur.com/mT8520q.png",
+  "icon": "http://i.imgur.com/VW4U4XK.jpg",
   "version": "0.1.0",
   "slug": "apikoagro",
   "sdkVersion": "15.0.0",
   "android": {
-    "package": "com.apikoagro.mobile"
+    "package": "com.apikoagro.mobile",
+    "config": {
+      "googleMaps": {
+        "apiKey": ""
+      }
+    }
   }
 }
