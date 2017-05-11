@@ -1,7 +1,3 @@
-import { get } from '../../utils/api';
-import apiAddresses from '../../constants/apiAddresses';
-
-
 // Initial State
 const initialState = [];
 
@@ -9,23 +5,7 @@ const initialState = [];
 export const INIT_LOCALITIES = 'INIT_LOCALITIES';
 
 // Action creators
-const initLocalities = localities => ({ type: INIT_LOCALITIES, localities });
-
-// Thunks
-export function getLocalities() {
-  return async function(dispatch) {
-    try {
-      const body = await get(apiAddresses.LOCALITIES);
-      const { localities } = body;
-      dispatch(initLocalities(localities));
-
-
-    } catch(err) {
-      console.log(err);
-    }
-
-  }
-}
+export const initLocalities = localities => ({ type: INIT_LOCALITIES, localities });
 
 // Reducer
 export default (state = initialState, action) => {

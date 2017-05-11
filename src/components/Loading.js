@@ -19,7 +19,7 @@ Loading.propTypes = {
   size: PropTypes.number,
   color: PropTypes.string,
   thickness: PropTypes.number,
-  containerStyle: PropTypes.object,
+  containerStyle: PropTypes.any,
 };
 
 export default Loading;

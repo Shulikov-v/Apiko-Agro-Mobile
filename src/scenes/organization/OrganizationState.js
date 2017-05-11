@@ -1,7 +1,3 @@
-import { get } from '../../utils/api';
-import apiAddresses from '../../constants/apiAddresses';
-
-
 // Initial State
 const initialState = {
   _id: '',
@@ -13,23 +9,7 @@ const initialState = {
 const INIT_ORGANIZATION = 'INIT_ORGANIZATION';
 
 // Action creators
-const initOrganization = organization => ({ type: INIT_ORGANIZATION, organization });
-
-// Thunks
-export function getOrganizationInfo() {
-  return async function(dispatch) {
-    try {
-      const body = await get(apiAddresses.ORGANIZATIONS);
-      const { organization } = body;
-      dispatch(initOrganization(organization));
-
-
-    } catch(err) {
-      console.log(err);
-    }
-
-  }
-}
+export const initOrganization = organization => ({ type: INIT_ORGANIZATION, organization });
 
 // Reducer
 export default (state = initialState, action) => {

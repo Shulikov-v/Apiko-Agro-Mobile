@@ -49,7 +49,7 @@ export function signIn({ email, password }) {
 
       dispatch(ajaxAuthSuccess());
 
-      dispatch(NavigationActions.navigate({routeName: 'MainDrawer'}));
+      dispatch(NavigationActions.navigate({routeName: 'Preloader'}));
 
     } catch(err) {
       dispatch(ajaxAuthFailure(err));

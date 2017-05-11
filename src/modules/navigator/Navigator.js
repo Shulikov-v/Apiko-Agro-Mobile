@@ -7,6 +7,7 @@ import * as dictionaries from '../../scenes/dictionaries';
 import MapViewContainer from '../../scenes/map/MapViewContainer';
 import ProfileContainer from '../../scenes/profile/ProfileContainer';
 import OrganizationContainer from '../../scenes/organization/OrganizationContainer';
+import Preloader from '../preloader/PreloaderContainer';
 import CustomDrawerContentComponent from '../CustomDrawerContentComponent/Container';
 
 import { getAuthenticationToken } from '../../utils/authentication';
@@ -60,9 +61,10 @@ const AuthNavigator = StackNavigator({
 
 const AppNavigator = StackNavigator({
   MainDrawer: { screen: MainDrawer },
+  Preloader: { screen: Preloader },
   Authorization: { screen: AuthNavigator }
 }, {
-  initialRouteName: getAuthenticationToken()._65 ? 'MainDrawer' : 'Authorization',
+  initialRouteName: getAuthenticationToken()._65 ? 'Preloader' : 'Authorization',
   headerMode: 'none',
 });
 

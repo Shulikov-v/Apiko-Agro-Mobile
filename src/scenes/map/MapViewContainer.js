@@ -3,11 +3,6 @@ import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 import { compose, lifecycle, defaultProps, withHandlers, withState } from 'recompose';
 
-import { getOrganizationInfo } from '../organization/OrganizationState';
-import { getDepartments } from '../departments/DepartmentsState';
-import { getLocalities } from '../localities/LocalitiesState';
-import { getUserProfile } from '../profile/ProfileState';
-import { getFields } from '../fields/FieldsState';
 import { getPolygons } from '../polygons/PolygonsState';
 
 import Map from './MapView';
@@ -40,11 +35,6 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  initOrganization: getOrganizationInfo,
-  initDepartments: getDepartments,
-  initLocalities: getLocalities,
-  initUser: getUserProfile,
-  initFields: getFields,
   initPolygons: getPolygons,
 };
 
@@ -97,13 +87,6 @@ const enhance = compose(
     },
   }),
   lifecycle({
-    componentDidMount() {
-      this.props.initOrganization();
-      this.props.initDepartments();
-      this.props.initLocalities();
-      this.props.initFields();
-      this.props.initUser();
-    },
     componentWillReceiveProps({ mapFilter }) {
       const { activeLocality } = mapFilter;
 

@@ -1,7 +1,3 @@
-import { get } from '../../utils/api';
-import apiAddresses from '../../constants/apiAddresses';
-
-
 // Initial State
 const initialState = [];
 
@@ -9,23 +5,7 @@ const initialState = [];
 const INIT_FIELDS = 'INIT_FIELDS';
 
 // Action creators
-const initFields = fields => ({ type: INIT_FIELDS, fields });
-
-// Thunks
-export function getFields() {
-  return async function(dispatch) {
-    try {
-      const body = await get(apiAddresses.FIELDS);
-      const { fields } = body;
-      dispatch(initFields(fields));
-
-
-    } catch(err) {
-      console.log(err);
-    }
-
-  }
-}
+export const initFields = fields => ({ type: INIT_FIELDS, fields });
 
 // Reducer
 export default (state = initialState, action) => {
