@@ -13,7 +13,7 @@ const FilterDepartmentList = ({
   <View>
     {
       departments.map((dep, i) => (
-        <Card title={dep.name} key={i}>
+        <Card title={dep.name} key={i} containerStyle={styles.cardContainer}>
           <List containerStyle={styles.departmentsListContainer}>
             {
               dep.localities.map((loc, i) =>
@@ -35,6 +35,7 @@ const FilterDepartmentList = ({
 
 const styles = StyleSheet.create({
   departmentsListContainer: { marginTop: 0 },
+  cardContainer: { borderRadius: 2 },
 });
 
 export default FilterDepartmentList;

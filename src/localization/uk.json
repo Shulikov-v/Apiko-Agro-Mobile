@@ -8,6 +8,7 @@
   "surname": "Прізвище",
   "surname_placeholder": "Введіть Ваше прізвище",
   "surname_required": "Це поле обов'язкове",
+  "full_name": "Ім'я та Прізвище",
   "password": "Пароль",
   "password_placeholder": "Введіть пароль тут",
   "password_error": "Пароль повинен містити 6 і більше знаків",

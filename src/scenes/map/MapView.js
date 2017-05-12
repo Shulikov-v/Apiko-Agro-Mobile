@@ -23,6 +23,11 @@ const Map = ({
       style={styles.map}
       initialRegion={initialRegion}
       mapType='terrain'
+      toolbarEnabled={false}
+      moveOnMarkerPress={false}
+      showsTraffic={false}
+      showsPointsOfInterest={false}
+      showsUserLocation={true}
     >
       <Fields
         showModal={showModal}

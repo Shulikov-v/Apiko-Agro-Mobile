@@ -21,7 +21,7 @@ const FiltersModal = ({
     animationOut='slideOutUp'
   >
     <ScrollView showsVerticalScrollIndicator={false}>
-      <Card>
+      <Card containerStyle={styles.cardContainer}>
         <View style={styles.topModalView}>
           <Text h3>{translate('departments')}</Text>
         </View>
@@ -34,7 +34,7 @@ const FiltersModal = ({
         <Button
           title={translate('close')}
           onPress={() => toggleModal()}
-          buttonStyle={styles.topModalCloseButton}
+          buttonStyle={styles.closeButton}
         />
       </Card>
     </ScrollView>
@@ -43,8 +43,10 @@ const FiltersModal = ({
 
 const styles = StyleSheet.create({
   topModal: { justifyContent: 'flex-start' },
-  topModalView: { marginTop: 10, padding: 15 },
-  topModalCloseButton: { marginTop: 10 },
+  topModalView: { alignItems: 'center' },
+
+  cardContainer: { borderRadius: 3 },
+  closeButton: { marginTop: 10, height: 45, borderRadius: 3 }
 });
 
 export default FiltersModal;
