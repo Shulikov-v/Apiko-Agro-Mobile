@@ -8,7 +8,6 @@ import FilterDepartmentList from './FilterDepartmentList';
 
 const FiltersModal = ({
                         mapFilter,
-
                         departments,
                         toggleModal,
                         toggleLocalitiesFilter,

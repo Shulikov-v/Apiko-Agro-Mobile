@@ -1,9 +1,21 @@
 {
   "name": "Apiko Agro",
-  "icon": "http://i.imgur.com/VW4U4XK.jpg",
+  "description": "React Native App for Apiko Agro",
+  "icon": "http://i.imgur.com/zM3pFgU.png",
   "version": "0.1.0",
   "slug": "apikoagro",
+  "privacy": "unlisted",
   "sdkVersion": "15.0.0",
+  "primaryColor": "#2196F3",
+  "androidStatusBarColor": "#1976D2",
+  "androidStatusBar": {
+    "backgroundColor": "#1976D2",
+    "barStyle": "light-content"
+  },
+  "loading": {
+    "icon": "http://i.imgur.com/zM3pFgU.png",
+    "hideExponentText": true
+  },
   "android": {
     "package": "com.apikoagro.mobile",
     "config": {

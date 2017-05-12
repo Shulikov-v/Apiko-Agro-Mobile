@@ -17,8 +17,15 @@ export default {
   // additional
   white: '#ffffff',
   black: '#000000',
+  almostDark: '#272727',
+  darkGray: '#5a5a5a',
   gray: '#848b90',
   lightgray: '#F5F5F5',
   lightShadow: 'rgba(0, 0, 0, 0.05)',
   darkShadow: 'rgba(0, 0, 0, 0.4)',
+
+  opacity: {
+    half: '80',   // 0.5 opacity
+    aLittle: '32' // 0.2 opacity
+  }
 };

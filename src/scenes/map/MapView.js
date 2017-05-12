@@ -1,85 +1,47 @@
 import React from 'react';
-import R from 'ramda';
 import { MapView }  from 'expo';
 import { View, StyleSheet } from 'react-native';
 
-import ActiveFieldModal from '../../components/ActiveFieldModal';
-import ActivePolygonModal from '../../components/ActivePolygonModal';
+import Fields from './Fields/FieldsContainer';
+import Polygons from './Polygons/PolygonsContainer';
+
+import MapInfoModal from '../../components/MapInfoModal';
 import FiltersModal from './FiltersModalContainer';
 
 const Map = ({
-               fields,
-               polygons,
-               mapFilter,
                initialRegion,
-               getFieldInfoById,
-               getColorForField,
 
-               // ActiveFieldModal
-               activeField,
-               setActiveField,
                showModal,
+               setModalData,
+               modalData,
                isModalVisible,
-
-               // ActivePolygonModal
-               activePolygon,
-               setActivePolygon,
-               getPolygonInfoById,
-               showPolygonModal,
-               isPolygonModalVisible,
              }) => {
-  console.log(polygons && polygons[0] && 'polygons loaded')
   return(
   <View style={styles.container}>
+
     <MapView
       style={styles.map}
       initialRegion={initialRegion}
       mapType='terrain'
     >
-      {!R.isEmpty(fields) ?
-        fields.map((field, i) => {
-        return mapFilter.fields[field.localityId] ?
-          <MapView.Polygon
-            key={i}
-            coordinates={field.coordinates.map(cord => ({latitude: cord.lat, longitude: cord.lng}))}
-            strokeColor={getColorForField(field.localityId, 'stroke')}
-            fillColor={getColorForField(field.localityId, 'fill')}
-            onPress={() => {
-              setActiveField(getFieldInfoById(field._id));
-              showModal(true);
-            }}
-          /> : null;
-      })
-        : null}
-      {!R.isEmpty(polygons) ?
-        polygons.map((polygon, i) =>
-          <MapView.Polygon
-            key={i}
-            coordinates={polygon.coordinates.map(cord => ({latitude: cord.lat, longitude: cord.lng}))}
-            strokeColor={ '#27272780' } // 0.5 opacity
-            fillColor={ '#5a5a5a32' }   // 0.2 opacity
-            onPress={() => {
-              setActivePolygon(getPolygonInfoById(polygon._id));
-              showPolygonModal(true);
-            }}
-          />
-        ) : null}
+      <Fields
+        showModal={showModal}
+        setModalData={setModalData}
+      />
+      <Polygons
+        showModal={showModal}
+        setModalData={setModalData}
+      />
     </MapView>
-    <ActiveFieldModal
-      activeField={activeField}
-      setActiveField={setActiveField}
+
+    <MapInfoModal
       showModal={showModal}
+      modalData={modalData}
+      setModalData={setModalData}
       isModalVisible={isModalVisible}
     />
-    <ActivePolygonModal
-      activePolygon={activePolygon}
-      setActivePolygon={setActivePolygon}
-      showPolygonModal={showPolygonModal}
-      isModalVisible={isPolygonModalVisible}
-    />
-    <FiltersModal
-      mapFilter={mapFilter}
-    />
+    <FiltersModal />
+
   </View>
 )};
 

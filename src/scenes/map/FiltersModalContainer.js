@@ -25,6 +25,7 @@ const departmentsSelector = createSelector([
 );
 
 const mapStateToProps = state => ({
+  mapFilter: state.mapFilter,
   departments: departmentsSelector(state),
 });
 

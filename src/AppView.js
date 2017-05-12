@@ -5,8 +5,8 @@ import NavigatorViewContainer from './modules/navigator/NavigatorViewContainer';
 
 const AppView = ({ isReady }) => (
   isReady ? (
-  <View style={{ flex: 1, marginTop: StatusBar.currentHeight }}>
-    <StatusBar />
+  <View style={{ flex: 1 }}>
+    <StatusBar barStyle="light-content" backgroundColor="#1976D2"/>
     <NavigatorViewContainer />
   </View>
   ) : (
