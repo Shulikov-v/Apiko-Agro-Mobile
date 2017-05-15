@@ -1,7 +1,7 @@
 {
   "name": "Apiko Agro",
   "description": "React Native App for Apiko Agro",
-  "icon": "http://i.imgur.com/zM3pFgU.png",
+  "icon": "http://i.imgur.com/Ap0e7q0.png",
   "version": "0.1.0",
   "slug": "apikoagro",
   "privacy": "unlisted",
@@ -13,14 +13,14 @@
     "barStyle": "light-content"
   },
   "loading": {
-    "icon": "http://i.imgur.com/zM3pFgU.png",
+    "icon": "http://i.imgur.com/Ap0e7q0.png",
     "hideExponentText": true
   },
   "android": {
     "package": "com.apikoagro.mobile",
     "config": {
       "googleMaps": {
-        "apiKey": ""
+        "apiKey": "AIzaSyCswU9ULYfLrDPivkAWvPxGpa9Ky0JmK5k"
       }
     }
   }
