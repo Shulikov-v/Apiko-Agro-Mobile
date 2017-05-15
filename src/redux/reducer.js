@@ -9,7 +9,7 @@ import MapReducer from '../scenes/map/MapViewState';
 import PolygonReducer from '../scenes/polygons/PolygonsState';
 
 import NavigatorStateReducer from '../modules/navigator/NavigatorState';
-import SessionStateReducer, { RESET_STATE } from '../modules/session/SessionState';
+import SessionStateReducer from '../modules/session/SessionState';
 import AuthorizationReducer from '../scenes/authorization/AuthorizationState';
 
 const appReducer = combineReducers({
@@ -26,10 +26,4 @@ const appReducer = combineReducers({
   navigatorState: NavigatorStateReducer
 });
 
-export default (state, action) => {
-  // if (action.type === RESET_STATE) {
-  //   state = null; // eslint-disable-line no-param-reassign
-  // }
-
-  return appReducer(state, action);
-};
+export default (state, action) => appReducer(state, action);

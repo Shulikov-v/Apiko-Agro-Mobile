@@ -1,16 +1,16 @@
-import React, { Component, PropTypes } from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
-import { Button } from 'react-native-elements';
 import R from 'ramda';
-import { isValidEmail, isValidPassword } from '../utils/validateText';
-import authFormTypes from '../constants/authFormTypes';
-import ValidInput from './ValidFormInput';
-import Loading from './Loading';
-import showError from '../utils/showErrorAlert';
-import styles from '../styles/AuthFormStyles';
-import colors from '../styles/common/colors';
-
+import { Button } from 'react-native-elements';
 import { translate } from 'react-native-translate';
+import React, { Component, PropTypes } from 'react';
+import { Text, TouchableOpacity, View, StyleSheet } from 'react-native';
+
+import Loading from './Loading';
+import ValidInput from './ValidFormInput';
+import colors from '../styles/common/colors';
+import normalize from '../utils/normalizeText';
+import showError from '../utils/showErrorAlert';
+import authFormTypes from '../constants/authFormTypes';
+import { isValidEmail, isValidPassword } from '../utils/validateText';
 
 const { SIGN_UP, SIGN_IN } = authFormTypes;
 
@@ -172,5 +172,23 @@ AuthForm.propTypes = {
   loading: PropTypes.bool,
   error: PropTypes.any,
 };
+
+const styles = StyleSheet.create({
+  rootStyle: {
+    flex: 1,
+    justifyContent: 'center',
+    padding: 40,
+  },
+  buttonStyle: {
+    marginTop: 15,
+    marginBottom: 15,
+  },
+  linkStyle: {
+    alignItems: 'center',
+  },
+  linkTextStyle: {
+    fontSize: normalize(16),
+  },
+});
 
 export default AuthForm;
