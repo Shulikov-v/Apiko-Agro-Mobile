@@ -44,7 +44,7 @@ const FieldsView = ({
           onPress={showModalWithData(field._id)}
         />
         <MapView.Marker
-          onPress={showModalWithData(field._id)}
+          onPress={null}
           coordinate={getCenterCoords(field.coordinates)}
         >
           <Text style={styles.fieldText}>{field.name}</Text>

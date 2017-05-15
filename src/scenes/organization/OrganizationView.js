@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { List, ListItem, Text, Card } from 'react-native-elements'
 
 const OrganizationView = ({organization}) => (
@@ -9,7 +9,7 @@ const OrganizationView = ({organization}) => (
 
     </View>
 
-    <Card title="Населені пункти">
+    <Card title="Населені пункти" containerStyle={styles.cardContainer}>
     <List containerStyle={{ marginTop: 0 }}>
       {
         organization.localities.map((l, i) => (
@@ -27,5 +27,8 @@ const OrganizationView = ({organization}) => (
 
 OrganizationView.propTypes = {};
 
+const styles = StyleSheet.create({
+  cardContainer: { borderRadius: 3 },
+});
 
 export default OrganizationView;
