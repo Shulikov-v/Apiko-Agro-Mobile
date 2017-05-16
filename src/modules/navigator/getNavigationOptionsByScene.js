@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 
 import HamburgerIcon from '../../components/HamburgerIcon';
 import FilterIcon from '../../components/FilterIcon';
-import colors from '../../styles/common/colors';
+import colors from '../../styles/colors';
 
 const defaultHeaderConfig = (navigation, sceneTitle) => ({
   left: <HamburgerIcon navigation={navigation} />,
@@ -35,9 +35,27 @@ const translation = {
 
 export default function getNavigationOptionsByScene(sceneTitle) {
   return {
-    navigationOptions: {
+    navigationOptions: ({ navigation, screenProps }) => ({
       title: translation[sceneTitle],
-      header: (navigation, defaultHeader) => (defaultHeaderConfig(navigation, sceneTitle))
-    }
+
+      headerLeft: <HamburgerIcon navigation={navigation} />,
+      headerRight: sceneTitle === 'Map' ? <FilterIcon /> : null,
+      headerStyle: styles.bar,
+      headerTitleStyle: styles.titleStyle,
+    })
   }
+
+
+  // return ({ naviganion, screenProps }) => ({
+  //   navigationOptions: {
+  //     title: translation[sceneTitle],
+  //     header: (navigation, defaultHeader) => (defaultHeaderConfig(navigation, sceneTitle))
+  //   }
+  // })
+  // return {
+  //   navigationOptions: {
+  //     title: translation[sceneTitle],
+  //     header: (navigation, defaultHeader) => (defaultHeaderConfig(navigation, sceneTitle))
+  //   }
+  // }
 }

@@ -1,10 +1,22 @@
 import Promise from 'bluebird';
 import HttpError from 'standard-http-error';
-import { getConfiguration } from '../utils/configuration';
 import { getAuthenticationToken } from '../utils/authentication';
 
 const TIMEOUT = 6000;
 
+const API_ROOT = 'https://apiko-agro.herokuapp.com';
+
+export const apiEndpoint = {
+  SIGN_IN: '/api/v1/account/login',
+  SIGN_UP: '/api/v1/account',
+  INVITE_LINK: '/api/v1/users/invite_link',
+  ACCOUNT_ME: '/api/v1/account/me',
+  ORGANIZATIONS: '/api/v1/organizations',
+  LOCALITIES: '/api/v1/localities',
+  POLYGONS: '/api/v1/polygons',
+  FIELDS: '/api/v1/fields',
+  DEPARTMENTS: '/api/v1/departments',
+};
 
 export const query = data => `?${Object.keys(data).map(key => `${key}=${data[key]}`).join('&')}`;
 
@@ -15,7 +27,6 @@ export const query = data => `?${Object.keys(data).map(key => `${key}=${data[key
  * @returns {Promise} of response body
  */
 export async function get(path, suppressRedBox) {
-  console.log('get', path);
   return bodyOf(request('get', path, null, suppressRedBox));
 }
 
@@ -27,7 +38,6 @@ export async function get(path, suppressRedBox) {
  * @returns {Promise}  of response body
  */
 export async function post(path, body, suppressRedBox) {
-  console.log('post', path, body);
   return bodyOf(request('post', path, body, suppressRedBox));
 }
 
@@ -79,7 +89,7 @@ export async function request(method, path, body, suppressRedBox) {
  * Takes a relative path and makes it a full URL to API server
  */
 export function url(path) {
-  const apiRoot = getConfiguration('API_ROOT');
+  const apiRoot = API_ROOT;
   return path.indexOf('/') === 0
     ? apiRoot + path
     : apiRoot + '/' + path;

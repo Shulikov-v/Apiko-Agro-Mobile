@@ -2,10 +2,10 @@
   "name": "Apiko Agro",
   "description": "React Native App for Apiko Agro",
   "icon": "http://i.imgur.com/Ap0e7q0.png",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "slug": "apikoagro",
   "privacy": "unlisted",
-  "sdkVersion": "15.0.0",
+  "sdkVersion": "16.0.0",
   "primaryColor": "#2196F3",
   "androidStatusBarColor": "#1976D2",
   "androidStatusBar": {

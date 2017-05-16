@@ -3,7 +3,7 @@ import React from 'react';
 import { View } from 'react-native';
 import { MapView }  from 'expo';
 
-import colors from '../../../styles/common/colors';
+import colors from '../../../styles/colors';
 
 const PolygonsView = ({
                         showModal,

@@ -5,7 +5,7 @@ import { compose, withHandlers } from 'recompose';
 
 import FieldsView from './FieldsView';
 
-import colors from '../../../styles/common/colors';
+import colors from '../../../styles/colors';
 
 const localitiesSelector = createSelector([ state => state.localities ],
   localities => localities.map(loc => R.pick(['_id', 'name'], loc)));

@@ -5,8 +5,7 @@ import {
   setAuthenticationToken,
   clearAuthenticationToken
 } from '../../utils/authentication';
-import { post } from '../../utils/api';
-import apiAddresses from '../../constants/apiAddresses';
+import { apiEndpoint, post } from '../../utils/api';
 
 
 // Initial State
@@ -36,7 +35,7 @@ export function signIn({ email, password }) {
     const payload = { email, password };
 
     try {
-      const response = await post(apiAddresses.SIGN_IN, payload);
+      const response = await post(apiEndpoint.SIGN_IN, payload);
       const { user, token } = response;
 
       if (!user || !token) {
@@ -65,7 +64,7 @@ export function signUp({ email, name, surname, password }) {
     const payload = { email, firstName: name, lastName: surname, password };
 
     try {
-      const response = await post(apiAddresses.SIGN_UP, payload);
+      const response = await post(apiEndpoint.SIGN_UP, payload);
 
       if (!response._id) {
         dispatch(ajaxAuthFailure('Wrong response'));

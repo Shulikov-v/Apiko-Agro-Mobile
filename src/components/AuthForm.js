@@ -6,11 +6,15 @@ import { Text, TouchableOpacity, View, StyleSheet } from 'react-native';
 
 import Loading from './Loading';
 import ValidInput from './ValidFormInput';
-import colors from '../styles/common/colors';
+import colors from '../styles/colors';
 import normalize from '../utils/normalizeText';
 import showError from '../utils/showErrorAlert';
-import authFormTypes from '../constants/authFormTypes';
 import { isValidEmail, isValidPassword } from '../utils/validateText';
+
+const authFormTypes = {
+  SIGN_UP: 'SIGN_UP',
+  SIGN_IN: 'SIGN_IN',
+};
 
 const { SIGN_UP, SIGN_IN } = authFormTypes;
 
@@ -191,4 +195,5 @@ const styles = StyleSheet.create({
   },
 });
 
+export { authFormTypes };
 export default AuthForm;

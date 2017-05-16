@@ -1,5 +1,4 @@
-import { get, query } from '../../utils/api';
-import apiAddresses from '../../constants/apiAddresses';
+import { apiEndpoint, get, query } from '../../utils/api';
 
 
 // Initial State
@@ -15,7 +14,7 @@ const initPolygons = polygons => ({ type: INIT_POLYGONS, polygons });
 export function getPolygons(activeLocality) {
   return async function(dispatch) {
     try {
-      const body = await get(`${apiAddresses.POLYGONS}/${query({ localityId: activeLocality })}`);
+      const body = await get(`${apiEndpoint.POLYGONS}/${query({ localityId: activeLocality })}`);
       const { polygons } = body;
       dispatch(initPolygons(polygons));
 

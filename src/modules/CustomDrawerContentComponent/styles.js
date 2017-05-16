@@ -1,13 +1,19 @@
 import { Dimensions } from 'react-native';
-import ResetBorder from './mixins/ResetBordersMixin';
-import normalize from '../utils/normalizeText';
-import colors from './common/colors';
+import normalize from '../../utils/normalizeText';
+import colors from '../../styles/colors';
 
 const deviceScreen = Dimensions.get('window');
 const borderWidth = 0.5;
 const headerStyle = {
   height: 160,
   width: deviceScreen.width * 0.8,
+};
+
+const resetBorder = {
+  borderTopWidth: 0,
+  borderRightWidth: 0,
+  borderBottomWidth: 0,
+  borderLeftWidth: 0,
 };
 
 const styles = {
@@ -28,12 +34,12 @@ const styles = {
   linkListStyle: {
     flex: 1,
     marginTop: 0,
-    ...ResetBorder,
+    ...resetBorder,
     borderRightWidth: borderWidth,
     borderRightColor: colors.divider,
   },
   linkStyle: {
-    ...ResetBorder,
+    ...resetBorder,
   },
   textStyle: {
     color: colors.secondaryText,

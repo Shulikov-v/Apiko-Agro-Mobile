@@ -2,10 +2,17 @@ import React from 'react';
 import { ListItem } from 'react-native-elements';
 import { translate } from 'react-native-translate';
 
-import colors from '../../styles/common/colors';
-import styles from '../../styles/NavigationDrawerStyles';
+import colors from '../../styles/colors';
+import styles from './styles';
 
-import scenes from '../../constants/scenesKeys';
+const scenes = {
+  "MAP": "MAP",
+  "ORGANIZATION": "ORGANIZATION",
+  "DICTIONARIES": "DICTIONARIES",
+  "PROFILE": "PROFILE",
+  "SIGN_IN": "SIGN_IN"
+};
+
 
 const sceneOptionsMap = {
   [scenes.MAP]: {
@@ -53,6 +60,7 @@ const getLinkItem = (title, icon, onPress) => (
 );
 
 export {
+  scenes,
   goToScene,
   getLinkItem,
   getSceneTitle,

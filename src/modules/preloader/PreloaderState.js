@@ -1,7 +1,6 @@
 import { NavigationActions } from 'react-navigation';
 
-import { get } from '../../utils/api';
-import apiAddresses from '../../constants/apiAddresses';
+import { apiEndpoint, get } from '../../utils/api';
 
 import { initOrganization } from '../../scenes/organization/OrganizationState';
 import { initDepartments } from '../../scenes/departments/DepartmentsState';
@@ -13,11 +12,11 @@ import { initFields } from '../../scenes/fields/FieldsState';
 export function fetchMapData() {
   return async function(dispatch) {
     const data = await Promise.all([
-      get(apiAddresses.ORGANIZATIONS),
-      get(apiAddresses.DEPARTMENTS),
-      get(apiAddresses.LOCALITIES),
-      get(apiAddresses.ACCOUNT_ME),
-      get(apiAddresses.FIELDS)
+      get(apiEndpoint.ORGANIZATIONS),
+      get(apiEndpoint.DEPARTMENTS),
+      get(apiEndpoint.LOCALITIES),
+      get(apiEndpoint.ACCOUNT_ME),
+      get(apiEndpoint.FIELDS)
     ]);
 
     dispatch(initOrganization(data[0].organization));

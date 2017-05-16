@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, Image, Dimensions, StyleSheet } from 'react-native';
 
 import normalize from '../utils/normalizeText';
-import colors from '../styles/common/colors';
+import colors from '../styles/colors';
 
 const deviceScreen = Dimensions.get('window');
 const coverImage = require('../images/pattern.png');

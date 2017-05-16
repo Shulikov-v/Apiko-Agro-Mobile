@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { connect } from 'react-redux';
 import { toggleFilterModal } from '../scenes/map/MapViewState';
 
-import colors from '../styles/common/colors';
+import colors from '../styles/colors';
 
 const FilterIcon = ({ navigation, toggleFilterModal }) => (
   <TouchableNativeFeedback

@@ -1,7 +1,8 @@
 import React, { Component, PropTypes } from 'react';
-import { Text, TextInput, View } from 'react-native';
-import colors from '../styles/common/colors';
-import styles from '../styles/FormInputStyles';
+import { Text, TextInput, View, StyleSheet } from 'react-native';
+
+import normalize from '../utils/normalizeText';
+import colors from '../styles/colors';
 
 class ValidFormInput extends Component {
   constructor(props) {
@@ -60,7 +61,6 @@ class ValidFormInput extends Component {
         >
           <TextInput
             autoCapitalize="none"
-            selectionColor={colors.defaultPrimary}
             {...inputProps}
             underlineColorAndroid={'transparent'}
             style={[styles.inputStyle, inputStyle]}
@@ -95,5 +95,40 @@ ValidFormInput.propTypes = {
   errorText: PropTypes.string,
   errorTextStyle: PropTypes.object,
 };
+
+const styles = StyleSheet.create({
+  containerStyle: {
+    marginLeft: 15,
+    marginRight: 15,
+  },
+  labelStyle: {
+    marginTop: 15,
+    marginBottom: 1,
+    color: colors.secondaryText,
+    fontSize: normalize(11),
+  },
+  labelOnErrorStyle: {
+    color: colors.error,
+  },
+  inputContainerStyle: {
+    borderBottomColor: colors.divider,
+    borderBottomWidth: 1,
+    marginBottom: 2,
+  },
+  inputContainerOnErrorStyle: {
+    borderBottomColor: colors.error,
+  },
+  inputStyle: {
+    color: colors.primaryText,
+    fontSize: normalize(14),
+    paddingVertical: 0,
+  },
+  errorTextStyle: {
+    marginTop: 5,
+    marginBottom: 5,
+    fontSize: normalize(12),
+    color: colors.error,
+  },
+});
 
 export default ValidFormInput;

@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { ListItem, Text, Icon } from 'react-native-elements';
 
-import colors from '../styles/common/colors';
+import colors from '../styles/colors';
 
 const FilterLocalityItem = ({
                         locality,

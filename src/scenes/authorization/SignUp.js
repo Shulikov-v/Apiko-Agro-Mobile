@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 import React, { PropTypes } from 'react';
 
 import { signUp } from './AuthorizationState';
-import AuthForm from '../../components/AuthForm';
-import authFormTypes from '../../constants/authFormTypes';
+import AuthForm, { authFormTypes } from '../../components/AuthForm';
 
 
 const Register = ({ onSignUp, loading, navigation }) => (

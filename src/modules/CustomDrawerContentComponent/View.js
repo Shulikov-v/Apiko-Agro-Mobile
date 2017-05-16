@@ -3,16 +3,15 @@ import { View, Share } from 'react-native';
 import { List, Divider } from 'react-native-elements';
 import { translate } from 'react-native-translate';
 
-import { get } from '../../utils/api';
-import apiAdresses from '../../constants/apiAddresses';
+import { get, apiEndpoint } from '../../utils/api';
 
 
 import DrawerLogo from '../../components/DrawerLogo';
-import scenes from '../../constants/scenesKeys';
 
-import styles from '../../styles/NavigationDrawerStyles';
+import styles from './styles';
 
 import {
+  scenes,
   goToScene,
   getLinkItem,
   getSceneTitle,
@@ -31,7 +30,7 @@ const InviteParticipant = () => getLinkItem(
   'invite_participant',
   'send',
   async () => {
-    const body = await get(apiAdresses.INVITE_LINK);
+    const body = await get(apiEndpoint.INVITE_LINK);
 
     Share.share({
       title: translate('share_message_title'),

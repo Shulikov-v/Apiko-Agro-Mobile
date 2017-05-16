@@ -1,13 +1,12 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { NavigationActions } from 'react-navigation';
 import { BackAndroid } from 'react-native';
+import { NavigationActions } from 'react-navigation';
+import { setLocalization } from 'react-native-translate';
 
 import store from './src/redux/store';
 import AppViewContainer from './src/AppViewContainer';
-
 import ukTranslation from './src/localization/uk.json';
-import { setLocalization } from 'react-native-translate';
 
 setLocalization(ukTranslation);
 
