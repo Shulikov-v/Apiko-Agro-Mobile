@@ -12,20 +12,18 @@ const getFieldsForTable = createSelector([
     const getLocalityNameById = id =>
       localities.find(loc => loc._id === id).name;
 
-  return fields
+    return fields
     .map(field => ({
       _id: field._id,
       name: field.name,
       square: field.square,
       localityName: getLocalityNameById(field.localityId),
-    }))[0]
+    }))[0];
   });
 
-const mapStateToProps = state => {
-  return {
-    fields: getFieldsForTable(state)
-  };
-};
+const mapStateToProps = state => ({
+  fields: getFieldsForTable(state),
+});
 
 const enhance = compose(
   connect(mapStateToProps),

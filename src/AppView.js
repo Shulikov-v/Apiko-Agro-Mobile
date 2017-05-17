@@ -5,12 +5,12 @@ import NavigatorViewContainer from './modules/navigator/NavigatorViewContainer';
 
 const AppView = ({ isReady }) => (
   isReady ? (
-  <View style={{ flex: 1 }}>
-    <StatusBar barStyle="light-content" backgroundColor="#1976D2"/>
-    <NavigatorViewContainer />
-  </View>
+    <View style={styles.fillAll}>
+      <StatusBar barStyle="light-content" backgroundColor="#1976D2" />
+      <NavigatorViewContainer />
+    </View>
   ) : (
-    <View style={{ flex: 1 }}>
+    <View style={styles.fillAll}>
       <ActivityIndicator
         style={styles.centered}
         size="large"
@@ -21,14 +21,11 @@ const AppView = ({ isReady }) => (
 
 AppView.propTypes = {
   isReady: PropTypes.bool.isRequired,
-  dispatch: PropTypes.func.isRequired
 };
 
 const styles = StyleSheet.create({
-  centered: {
-    flex: 1,
-    alignSelf: 'center'
-  }
+  fillAll: { flex: 1 },
+  centered: { flex: 1, alignSelf: 'center' },
 });
 
 export default AppView;

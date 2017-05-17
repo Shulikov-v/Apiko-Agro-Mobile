@@ -20,12 +20,15 @@ export default {
   almostDark: '#272727',
   darkGray: '#5a5a5a',
   gray: '#848b90',
+  darkerGray: '#43484d',
   lightgray: '#F5F5F5',
+  pastel: '#ededed',
   lightShadow: 'rgba(0, 0, 0, 0.05)',
   darkShadow: 'rgba(0, 0, 0, 0.4)',
+  transparent: 'transparent',
 
   opacity: {
     half: '80',   // 0.5 opacity
-    aLittle: '32' // 0.2 opacity
-  }
+    aLittle: '32', // 0.2 opacity
+  },
 };

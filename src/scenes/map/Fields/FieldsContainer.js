@@ -7,7 +7,7 @@ import FieldsView from './FieldsView';
 
 import colors from '../../../styles/colors';
 
-const localitiesSelector = createSelector([ state => state.localities ],
+const localitiesSelector = createSelector([state => state.localities],
   localities => localities.map(loc => R.pick(['_id', 'name'], loc)));
 
 const mapStateToProps = state => ({
@@ -20,25 +20,25 @@ const mapStateToProps = state => ({
 const enhance = compose(
   connect(mapStateToProps),
   withHandlers({
-    getFieldInfoById: ({ fields, localities }) => id => {
-      if(R.isEmpty(fields) || R.isEmpty(localities)) return;
+    getFieldInfoById: ({ fields, localities }) => (id) => {
+      if (R.isEmpty(fields) || R.isEmpty(localities)) return null;
 
-      const field = fields.find(field => field._id === id);
+      const field = fields.find(f => f._id === id);
       const locality = localities.find(loc => loc._id === field.localityId);
 
       return {
         ...R.pick(['name', 'square'], field),
-        localityName: locality.name
+        localityName: locality.name,
       };
     },
     getColorForField: ({ organization }) => (localityId, type) => {
       const { half, aLittle } = colors.opacity;
 
-      if(R.isEmpty(organization)) return;
+      if (R.isEmpty(organization)) return null;
 
-      const opacityValue = type => {
-        if(type === 'stroke') return half;
-        if (type === 'fill') return aLittle;
+      const opacityValue = value => {
+        if (value === 'stroke') return half;
+        if (value === 'fill') return aLittle;
         return '';
       };
 

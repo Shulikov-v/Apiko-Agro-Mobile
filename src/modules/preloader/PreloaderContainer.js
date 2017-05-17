@@ -11,7 +11,7 @@ const enhance = compose(
     null,
     {
       fetchMapData,
-    }
+    },
   ),
   lifecycle({
     async componentDidMount() {
@@ -21,7 +21,7 @@ const enhance = compose(
       if (initialAsk.status !== 'granted') {
         Permissions.askAsync(Permissions.LOCATION);
       }
-    }
+    },
   }),
 );
 

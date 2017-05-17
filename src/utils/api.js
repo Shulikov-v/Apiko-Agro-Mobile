@@ -74,10 +74,9 @@ export async function request(method, path, body, suppressRedBox) {
     const response = await sendRequest(method, path, body, suppressRedBox);
     return handleResponse(
       path,
-      response
+      response,
     );
-  }
-  catch (error) {
+  } catch (error) {
     if (!suppressRedBox) {
       logError(error, url(path), method);
     }
@@ -92,7 +91,7 @@ export function url(path) {
   const apiRoot = API_ROOT;
   return path.indexOf('/') === 0
     ? apiRoot + path
-    : apiRoot + '/' + path;
+    : `${apiRoot}/${path}`;
 }
 
 /**
@@ -132,7 +131,7 @@ async function handleResponse(path, response) {
     return {
       status: response.status,
       headers: response.headers,
-      body: responseBody ? JSON.parse(responseBody) : null
+      body: responseBody ? JSON.parse(responseBody) : null,
     };
   } catch (e) {
     throw e;
@@ -141,8 +140,8 @@ async function handleResponse(path, response) {
 
 function getRequestHeaders(body, token) {
   const headers = body
-    ? { 'Accept': 'application/json', 'Content-Type': 'application/json' }
-    : { 'Accept': 'application/json' };
+    ? { Accept: 'application/json', 'Content-Type': 'application/json' }
+    : { Accept: 'application/json' };
 
   if (token) {
     return { ...headers, Authorization: `Bearer ${token}` };
@@ -168,7 +167,6 @@ async function getErrorMessageSafely(response) {
 
     // Should that fail, return the whole response body as text
     return body;
-
   } catch (e) {
     // Unreadable body, return whatever the server returned
     return response._bodyInit;
@@ -182,7 +180,7 @@ function timeout(promise, ms) {
   return new Promise((resolve, reject) => {
     const timer = setTimeout(() => reject(new Error('timeout')), ms);
     promise
-      .then(response => {
+      .then((response) => {
         clearTimeout(timer);
         resolve(response);
       })
@@ -205,9 +203,10 @@ async function bodyOf(requestPromise) {
 function logError(error, endpoint, method) {
   if (error.status) {
     const summary = `(${error.status} ${error.statusText}): ${error._bodyInit}`;
+    // eslint-disable-next-line no-console
     console.error(`API request ${method.toUpperCase()} ${endpoint} responded with ${summary}`);
-  }
-  else {
+  } else {
+    // eslint-disable-next-line no-console
     console.error(`API request ${method.toUpperCase()} ${endpoint} failed with message "${error.message}"`);
   }
 }

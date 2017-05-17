@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { ListItem, Text, Icon } from 'react-native-elements';
 
@@ -8,23 +8,23 @@ const FilterLocalityItem = ({
                         locality,
                         setActiveLocality,
                         toggleLocalitiesFilter,
-                        mapFilter
+                        mapFilter,
                       }) => {
   const LocalityItemComponent = () => (
     <View style={styles.localityItemContainer}>
       <Text style={styles.localityItemHeader}>{locality.name}</Text>
-      <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end' }}>
+      <View style={styles.localityItemView}>
         <Icon
-          name={ mapFilter.fields[locality._id] ? 'map' : 'map-o' }
-          type='font-awesome'
+          name={mapFilter.fields[locality._id] ? 'map' : 'map-o'}
+          type="font-awesome"
           color={colors.gray}
           size={14}
           onPress={() => toggleLocalitiesFilter(locality._id)}
-          containerStyle={{ paddingRight: 8 }}
+          containerStyle={styles.mapIcon}
         />
         <Icon
-          name={ mapFilter.activeLocality === locality._id ? 'eye' : 'eye-slash' }
-          type='font-awesome'
+          name={mapFilter.activeLocality === locality._id ? 'eye' : 'eye-slash'}
+          type="font-awesome"
           color={colors.gray}
           size={14}
           onPress={() => {
@@ -39,12 +39,19 @@ const FilterLocalityItem = ({
     </View>
   );
 
-  return(
+  return (
     <ListItem
       component={LocalityItemComponent}
-      hideChevron={true}
+      hideChevron
     />
-  )
+  );
+};
+
+FilterLocalityItem.propTypes = {
+  locality: PropTypes.object.isRequired,
+  setActiveLocality: PropTypes.func.isRequired,
+  toggleLocalitiesFilter: PropTypes.func.isRequired,
+  mapFilter: PropTypes.object.isRequired,
 };
 
 const styles = StyleSheet.create({
@@ -52,19 +59,27 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     paddingRight: 10,
     paddingBottom: 10,
-    borderBottomColor: '#ededed',
+    borderBottomColor: colors.pastel,
     borderBottomWidth: 1,
-    backgroundColor: 'transparent',
+    backgroundColor: colors.transparent,
     flex: 1,
     flexDirection: 'row',
   },
   localityItemHeader: {
     fontFamily: 'sans-serif',
     fontSize: 14,
-    color: '#43484d',
+    color: colors.darkerGray,
     marginLeft: 10,
     flex: 2,
-  }
+  },
+  localityItemView: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+  },
+  mapIcon: {
+    paddingRight: 8,
+  },
 });
 
 export default FilterLocalityItem;

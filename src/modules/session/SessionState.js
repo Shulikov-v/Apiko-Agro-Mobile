@@ -8,13 +8,13 @@ const initialState = { isReady: false };
 export function resetSessionStateFromSnapshot(state) {
   return {
     type: RESET_STATE,
-    payload: state
+    payload: state,
   };
 }
 
 export function initializeSessionState() {
   return {
-    type: INITIALIZE_STATE
+    type: INITIALIZE_STATE,
   };
 }
 

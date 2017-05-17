@@ -5,9 +5,9 @@ const initialState = {
   profile: {
     firstName: '',
     lastName: '',
-    email: ''
+    email: '',
   },
-  roles: []
+  roles: [],
 };
 
 // Actions

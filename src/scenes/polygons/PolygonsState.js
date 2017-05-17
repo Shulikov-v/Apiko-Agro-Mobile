@@ -12,17 +12,16 @@ const initPolygons = polygons => ({ type: INIT_POLYGONS, polygons });
 
 // Thunks
 export function getPolygons(activeLocality) {
-  return async function(dispatch) {
+  return async function fetchPolygons(dispatch) {
     try {
       const body = await get(`${apiEndpoint.POLYGONS}/${query({ localityId: activeLocality })}`);
       const { polygons } = body;
       dispatch(initPolygons(polygons));
-
-    } catch(err) {
+    } catch (err) {
+      // eslint-disable-next-line no-console
       console.log(err);
     }
-
-  }
+  };
 }
 
 // Reducer

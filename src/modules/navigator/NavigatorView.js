@@ -8,7 +8,7 @@ const NavigatorView = ({ navigatorState, dispatch }) => (
     navigation={
       addNavigationHelpers({
         dispatch,
-        state: navigatorState
+        state: navigatorState,
       })
     }
   />
@@ -20,9 +20,9 @@ NavigatorView.propTypes = {
     index: PropTypes.number.isRequired,
     routes: PropTypes.arrayOf(PropTypes.shape({
       key: PropTypes.string.isRequired,
-      routeName: PropTypes.string.isRequired
-    }))
-  }).isRequired
+      routeName: PropTypes.string.isRequired,
+    })),
+  }).isRequired,
 };
 
 export default NavigatorView;

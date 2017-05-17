@@ -9,13 +9,13 @@ import * as SessionStateActions from './modules/session/SessionState';
 const enhance = compose(
   connect(
     state => ({
-      isReady: state.session.isReady
-    })
+      isReady: state.session.isReady,
+    }),
   ),
   lifecycle({
     componentDidMount() {
       snapshotUtil.resetSnapshot()
-        .then(snapshot => {
+        .then((snapshot) => {
           const { dispatch } = this.props;
 
           if (snapshot) {
@@ -28,8 +28,8 @@ const enhance = compose(
             snapshotUtil.saveSnapshot(store.getState());
           });
         });
-    }
-  })
+    },
+  }),
 );
 
 export default enhance(AppView);

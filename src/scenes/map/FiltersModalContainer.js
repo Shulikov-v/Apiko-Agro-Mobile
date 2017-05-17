@@ -6,7 +6,7 @@ import R from 'ramda';
 import {
   toggleFilterModal,
   toggleLocalitiesFilter,
-  setActiveLocality
+  setActiveLocality,
 } from './MapViewState';
 
 import FiltersModal from '../../components/FiltersModal';
@@ -15,13 +15,14 @@ const departmentsSelector = createSelector([
   state => state.departments,
   state => state.localities,
 ],
-  (departments, localities) => departments.map(dep => {
+  (departments, localities) => departments.map((dep) => {
+    // eslint-disable-next-line no-param-reassign
     dep.localities = dep.localitiesIds
       .map(locId => localities.find(loc => loc._id === locId))
       .map(loc => R.pick(['_id', 'name'], loc));
 
     return R.pick(['_id', 'name', 'localities'], dep);
-  })
+  }),
 );
 
 const mapStateToProps = state => ({

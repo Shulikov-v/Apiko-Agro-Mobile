@@ -10,13 +10,13 @@ import { initFields } from '../../scenes/fields/FieldsState';
 
 
 export function fetchMapData() {
-  return async function(dispatch) {
+  return async function fetchAll(dispatch) {
     const data = await Promise.all([
       get(apiEndpoint.ORGANIZATIONS),
       get(apiEndpoint.DEPARTMENTS),
       get(apiEndpoint.LOCALITIES),
       get(apiEndpoint.ACCOUNT_ME),
-      get(apiEndpoint.FIELDS)
+      get(apiEndpoint.FIELDS),
     ]);
 
     dispatch(initOrganization(data[0].organization));
@@ -26,6 +26,6 @@ export function fetchMapData() {
     dispatch(initFields(data[4].fields));
 
 
-    dispatch(NavigationActions.navigate({routeName: 'MainDrawer'}));
-  }
+    dispatch(NavigationActions.navigate({ routeName: 'MainDrawer' }));
+  };
 }

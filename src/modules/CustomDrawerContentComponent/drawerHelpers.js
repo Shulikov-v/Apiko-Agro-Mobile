@@ -6,11 +6,11 @@ import colors from '../../styles/colors';
 import styles from './styles';
 
 const scenes = {
-  "MAP": "MAP",
-  "ORGANIZATION": "ORGANIZATION",
-  "DICTIONARIES": "DICTIONARIES",
-  "PROFILE": "PROFILE",
-  "SIGN_IN": "SIGN_IN"
+  MAP: 'MAP',
+  ORGANIZATION: 'ORGANIZATION',
+  DICTIONARIES: 'DICTIONARIES',
+  PROFILE: 'PROFILE',
+  SIGN_IN: 'SIGN_IN',
 };
 
 
@@ -34,7 +34,7 @@ const sceneOptionsMap = {
   [scenes.SIGN_IN]: {
     title: 'Authorization',
     icon: 'exit-to-app',
-  }
+  },
 };
 
 const getSceneTitle = sceneKey => sceneOptionsMap[sceneKey].title;
@@ -54,7 +54,7 @@ const getLinkItem = (title, icon, onPress) => (
       name: icon,
       color: colors.defaultPrimary,
     }}
-    hideChevron={true}
+    hideChevron
     onPress={onPress}
   />
 );
@@ -64,5 +64,5 @@ export {
   goToScene,
   getLinkItem,
   getSceneTitle,
-  getSceneIconName
+  getSceneIconName,
 };

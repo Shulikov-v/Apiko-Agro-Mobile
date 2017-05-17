@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { StyleSheet, View, ScrollView } from 'react-native';
 import Modal from 'react-native-modal';
 import { Card, Button, Text } from 'react-native-elements';
@@ -11,14 +11,14 @@ const FiltersModal = ({
                         departments,
                         toggleModal,
                         toggleLocalitiesFilter,
-                        setActiveLocality
+                        setActiveLocality,
 }) => (
   <Modal
     isVisible={mapFilter.isOpen}
     backdropOpacity={0.2}
     style={styles.topModal}
-    animationIn='slideInDown'
-    animationOut='slideOutUp'
+    animationIn="slideInDown"
+    animationOut="slideOutUp"
   >
     <ScrollView showsVerticalScrollIndicator={false}>
       <Card containerStyle={styles.cardContainer}>
@@ -41,12 +41,20 @@ const FiltersModal = ({
   </Modal>
 );
 
+FiltersModal.propTypes = {
+  mapFilter: PropTypes.object,
+  departments: PropTypes.array.isRequired,
+  toggleModal: PropTypes.func.isRequired,
+  toggleLocalitiesFilter: PropTypes.func.isRequired,
+  setActiveLocality: PropTypes.func.isRequired,
+};
+
 const styles = StyleSheet.create({
   topModal: { justifyContent: 'flex-start' },
   topModalView: { alignItems: 'center' },
 
   cardContainer: { borderRadius: 3 },
-  closeButton: { marginTop: 10, height: 45, borderRadius: 3 }
+  closeButton: { marginTop: 10, height: 45, borderRadius: 3 },
 });
 
 export default FiltersModal;

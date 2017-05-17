@@ -7,16 +7,14 @@ import { getPolygons } from '../../polygons/PolygonsState';
 
 import PolygonsView from './PolygonsView';
 
-const localitiesSelector = createSelector([ state => state.localities ],
+const localitiesSelector = createSelector([state => state.localities],
   localities => localities.map(loc => R.pick(['_id', 'name'], loc)));
 
 const polygonsSelector = createSelector([
-    state => state.polygons,
-    state => state.mapFilter.activeLocality,
-  ],
-  (polygons, activeLocality) => {
-    return polygons.filter(polygon => polygon.localityId === activeLocality);
-  });
+  state => state.polygons,
+  state => state.mapFilter.activeLocality,
+],
+  (polygons, activeLocality) => polygons.filter(polygon => polygon.localityId === activeLocality));
 
 const mapStateToProps = state => ({
   activeLocality: state.mapFilter.activeLocality,
@@ -31,25 +29,24 @@ const mapDispatchToProps = {
 const enhance = compose(
   connect(mapStateToProps, mapDispatchToProps),
   withHandlers({
-    getPolygonInfoById: ({ polygons, localities }) => id => {
-      if(R.isEmpty(polygons) || R.isEmpty(localities)) return;
-      const polygon = polygons.find(polygon => polygon._id === id);
+    getPolygonInfoById: ({ polygons, localities }) => (id) => {
+      if (R.isEmpty(polygons) || R.isEmpty(localities)) return null;
+      const polygon = polygons.find(p => p._id === id);
       const locality = localities.find(loc => loc._id === polygon.localityId);
 
       return {
         ...R.pick(['cadastralNumber', 'square'], polygon),
-        localityName: locality.name
+        localityName: locality.name,
       };
     },
   }),
   lifecycle({
     componentWillReceiveProps({ activeLocality }) {
-
-      if(activeLocality && activeLocality !== this.props.activeLocality) {
+      if (activeLocality && activeLocality !== this.props.activeLocality) {
         this.props.initPolygons(activeLocality);
       }
-    }
-  })
+    },
+  }),
 );
 
 export default enhance(PolygonsView);

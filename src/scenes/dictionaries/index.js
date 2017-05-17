@@ -9,5 +9,5 @@ export {
   Fields,
   Landlords,
   RentContracts,
-  Renters
+  Renters,
 };

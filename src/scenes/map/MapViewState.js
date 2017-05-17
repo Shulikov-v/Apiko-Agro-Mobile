@@ -18,21 +18,21 @@ const TOGGLE_FILTERS_MODAL = 'TOGGLE_FILTERS_MODAL';
 
 // Thunks
 export function toggleFilterModal() {
-  return function(dispatch) {
+  return function (dispatch) {
     dispatch({ type: TOGGLE_FILTERS_MODAL });
-  }
+  };
 }
 
 export function toggleLocalitiesFilter(localityId) {
-  return function(dispatch) {
+  return function (dispatch) {
     dispatch({ type: TOGGLE_FIELDS_FILTER, localityId });
-  }
+  };
 }
 
 export function setActiveLocality(localityId) {
-  return function(dispatch) {
+  return function (dispatch) {
     dispatch({ type: CHANGE_ACTIVE_LOCALITY, localityId });
-  }
+  };
 }
 
 // Reducer

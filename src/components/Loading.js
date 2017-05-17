@@ -27,9 +27,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  spinnerStyle: {
-    margin: 10,
-  },
 });
 
 export default Loading;

@@ -1,4 +1,3 @@
-import React from 'react';
 import { StackNavigator, DrawerNavigator, TabNavigator } from 'react-navigation';
 
 import SignIn from '../../scenes/authorization/SignIn';
@@ -14,11 +13,11 @@ import { getAuthenticationToken } from '../../utils/authentication';
 import getNavigationOptionsByScene from './getNavigationOptionsByScene';
 
 const MapNavigator = StackNavigator({
-  Map: { screen: MapViewContainer }
+  Map: { screen: MapViewContainer },
 }, getNavigationOptionsByScene('Map'));
 
 const OrganizationNavigator = StackNavigator({
-  OrganizationPage: { screen: OrganizationContainer }
+  OrganizationPage: { screen: OrganizationContainer },
 }, getNavigationOptionsByScene('Organization'));
 
 const TabNavigatorContainer = TabNavigator({
@@ -33,15 +32,15 @@ const TabNavigatorContainer = TabNavigator({
 }, {
   tabBarOptions: {
     scrollEnabled: true,
-  }
+  },
 });
 
 const DictionariesNavigator = StackNavigator({
-  DictionariesPage: { screen: TabNavigatorContainer }
+  DictionariesPage: { screen: TabNavigatorContainer },
 }, getNavigationOptionsByScene('Dictionaries'));
 
 const ProfileNavigator = StackNavigator({
-  ProfilePage: { screen: ProfileContainer }
+  ProfilePage: { screen: ProfileContainer },
 }, getNavigationOptionsByScene('Profile'));
 
 const MainDrawer = DrawerNavigator({
@@ -51,18 +50,18 @@ const MainDrawer = DrawerNavigator({
   Profile: { screen: ProfileNavigator },
 }, {
   drawerWidth: 260,
-  contentComponent: CustomDrawerContentComponent
+  contentComponent: CustomDrawerContentComponent,
 });
 
 const AuthNavigator = StackNavigator({
   SignIn: { screen: SignIn },
-  SignUp: { screen: SignUp }
+  SignUp: { screen: SignUp },
 }, { ...getNavigationOptionsByScene('Apiko Agro'), headerMode: 'none' });
 
 const AppNavigator = StackNavigator({
   MainDrawer: { screen: MainDrawer },
   Preloader: { screen: Preloader },
-  Authorization: { screen: AuthNavigator }
+  Authorization: { screen: AuthNavigator },
 }, {
   initialRouteName: getAuthenticationToken()._65 ? 'Preloader' : 'Authorization',
   headerMode: 'none',

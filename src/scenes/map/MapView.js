@@ -1,5 +1,5 @@
-import React from 'react';
-import { MapView }  from 'expo';
+import React, { PropTypes } from 'react';
+import { MapView } from 'expo';
 import { View, StyleSheet } from 'react-native';
 
 import Fields from './Fields/FieldsContainer';
@@ -15,40 +15,39 @@ const Map = ({
                setModalData,
                modalData,
                isModalVisible,
-             }) => {
-  return(
-  <View style={styles.container}>
+             }) => (
+               <View style={styles.container}>
 
-    <MapView
-      style={styles.map}
-      initialRegion={initialRegion}
-      mapType='terrain'
-      toolbarEnabled={false}
-      moveOnMarkerPress={false}
-      showsTraffic={false}
-      showsPointsOfInterest={false}
-      showsUserLocation={true}
-    >
-      <Fields
-        showModal={showModal}
-        setModalData={setModalData}
-      />
-      <Polygons
-        showModal={showModal}
-        setModalData={setModalData}
-      />
-    </MapView>
+                 <MapView
+                   style={styles.map}
+                   initialRegion={initialRegion}
+                   mapType="terrain"
+                   toolbarEnabled={false}
+                   moveOnMarkerPress={false}
+                   showsTraffic={false}
+                   showsPointsOfInterest={false}
+                   showsUserLocation
+                 >
+                   <Fields
+                     showModal={showModal}
+                     setModalData={setModalData}
+                   />
+                   <Polygons
+                     showModal={showModal}
+                     setModalData={setModalData}
+                   />
+                 </MapView>
 
-    <MapInfoModal
-      showModal={showModal}
-      modalData={modalData}
-      setModalData={setModalData}
-      isModalVisible={isModalVisible}
-    />
-    <FiltersModal />
+                 <MapInfoModal
+                   showModal={showModal}
+                   modalData={modalData}
+                   setModalData={setModalData}
+                   isModalVisible={isModalVisible}
+                 />
+                 <FiltersModal />
 
-  </View>
-)};
+               </View>
+);
 
 const styles = StyleSheet.create({
   container: {
@@ -58,11 +57,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   map: {
-    ...StyleSheet.absoluteFillObject
+    ...StyleSheet.absoluteFillObject,
   },
 });
 
-Map.propTypes = { };
+Map.propTypes = {
+  initialRegion: PropTypes.object.isRequired,
+  showModal: PropTypes.func.isRequired,
+  setModalData: PropTypes.func.isRequired,
+  modalData: PropTypes.object,
+  isModalVisible: PropTypes.bool.isRequired,
+};
 
 
 export default Map;

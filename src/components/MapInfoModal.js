@@ -1,15 +1,20 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Modal from 'react-native-modal';
-import { Card, Button, Divider } from 'react-native-elements';
+import { Card, Button } from 'react-native-elements';
 import { translate } from 'react-native-translate';
 
 const InfoString = ({ fieldName, value }) => (
-  <View style={[ styles.cardCenter, styles.rowDirection ]}>
+  <View style={[styles.cardCenter, styles.rowDirection]}>
     <Text style={styles.labelSize}>{translate(fieldName)}: </Text>
     <Text style={styles.textBold}>{value}</Text>
   </View>
 );
+
+InfoString.propTypes = {
+  fieldName: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+};
 
 const MapInfoModal = ({
                     showModal,
@@ -19,7 +24,7 @@ const MapInfoModal = ({
                   }) => {
   if (!modalData) return null;
 
-  return(
+  return (
     <Modal
       isVisible={isModalVisible}
       backdropOpacity={0.2}
@@ -35,13 +40,13 @@ const MapInfoModal = ({
 
           </View>
         ) : ( // type === 'polygon'
-        <View style={styles.cardCenter}>
+          <View style={styles.cardCenter}>
 
-          <InfoString fieldName="cadastral_number" value={modalData.cadastralNumber} />
-          <InfoString fieldName="square" value={modalData.square} />
-          <InfoString fieldName="locality_name" value={modalData.localityName} />
+            <InfoString fieldName="cadastral_number" value={modalData.cadastralNumber} />
+            <InfoString fieldName="square" value={modalData.square} />
+            <InfoString fieldName="locality_name" value={modalData.localityName} />
 
-        </View>
+          </View>
         )}
 
         <Button
@@ -55,7 +60,14 @@ const MapInfoModal = ({
         />
       </Card>
     </Modal>
-  )
+  );
+};
+
+MapInfoModal.propTypes = {
+  showModal: PropTypes.func.isRequired,
+  modalData: PropTypes.object,
+  setModalData: PropTypes.func.isRequired,
+  isModalVisible: PropTypes.bool.isRequired,
 };
 
 const styles = StyleSheet.create({
@@ -65,7 +77,7 @@ const styles = StyleSheet.create({
   rowDirection: { flexDirection: 'row' },
   labelSize: { fontSize: 12 },
   textBold: { fontWeight: 'bold' },
-  closeButton: { marginTop: 10, height: 45, borderRadius: 3 }
+  closeButton: { marginTop: 10, height: 45, borderRadius: 3 },
 
 });
 

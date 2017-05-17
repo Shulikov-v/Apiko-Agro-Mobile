@@ -1,4 +1,5 @@
 import { AsyncStorage } from 'react-native';
+
 const STATE_STORAGE_KEY = 'ApikoAgroMobileAppState:Latest';
 
 export async function resetSnapshot() {
@@ -27,6 +28,7 @@ async function persist(state) {
   try {
     await AsyncStorage.setItem(STATE_STORAGE_KEY, JSON.stringify(state));
   } catch (e) {
+    // eslint-disable-next-line no-console
     console.error('Error persisting application state', e);
   }
 }
@@ -41,6 +43,7 @@ async function rehydrate() {
     const state = await AsyncStorage.getItem(STATE_STORAGE_KEY);
     return state || null;
   } catch (e) {
+    // eslint-disable-next-line no-console
     console.error('Error reading persisted application state', e);
     return null;
   }
@@ -50,6 +53,7 @@ async function clear() {
   try {
     await AsyncStorage.removeItem(STATE_STORAGE_KEY);
   } catch (e) {
+    // eslint-disable-next-line no-console
     console.error('Error clearing peristed application state', e);
   }
 }

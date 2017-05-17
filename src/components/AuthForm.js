@@ -72,10 +72,11 @@ class AuthForm extends Component {
   }
 
   onChangeAuthScene() {
-    console.log('onChangeAuthScene');
-    const next = this.props.type === SIGN_UP ? 'SignIn' : 'SignUp';
+    const { type, navigation } = this.props;
+
+    const next = type === SIGN_UP ? 'SignIn' : 'SignUp';
     this.setState(this.resetState);
-    this.props.navigation.navigate(next);
+    navigation.navigate(next);
   }
 
   isFormValid() {
@@ -83,8 +84,9 @@ class AuthForm extends Component {
     const isSingUpFieldsValid = this.props.type === SIGN_UP ?
       passwordConfirm.isValid && name.isValid && surname.isValid : true;
 
+    // commented because for now, our testing account using 4 digit password.
     // return email.isValid && password.isValid && isSingUpFieldsValid;
-    return email.isValid  && isSingUpFieldsValid;
+    return email.isValid && isSingUpFieldsValid;
   }
 
   render() {
@@ -122,7 +124,7 @@ class AuthForm extends Component {
                 validate={R.complement(R.isEmpty)}
                 value={surname}
                 inputProps={{ placeholder: translate('surname_placeholder') }}
-                errorText={ translate('surname_required') }
+                errorText={translate('surname_required')}
               />
             )}
             <ValidInput
@@ -131,7 +133,7 @@ class AuthForm extends Component {
               validate={isValidPassword}
               value={password}
               inputProps={{ placeholder: translate('password_placeholder'), secureTextEntry: true }}
-              errorText={ translate('password_error') }
+              errorText={translate('password_error')}
             />
             {authFormType === SIGN_UP && (
               <ValidInput
@@ -140,7 +142,7 @@ class AuthForm extends Component {
                 validate={R.equals(password.text)}
                 value={passwordConfirm}
                 inputProps={{ placeholder: translate('password_placeholder'), secureTextEntry: true }}
-                errorText={ translate('password_error_not_equal') }
+                errorText={translate('password_error_not_equal')}
               />
             )}
             <Button
@@ -170,11 +172,13 @@ class AuthForm extends Component {
 }
 
 AuthForm.propTypes = {
-  type: PropTypes.oneOf([SIGN_UP, SIGN_IN]).isRequired,
+  type: PropTypes.string.isRequired,
   onSignUp: PropTypes.func,
   onSignIn: PropTypes.func,
   loading: PropTypes.bool,
   error: PropTypes.any,
+  navigation: PropTypes.object.isRequired,
+  signOut: PropTypes.func,
 };
 
 const styles = StyleSheet.create({

@@ -2,7 +2,7 @@
 const initialState = {
   _id: '',
   name: '',
-  localities: []
+  localities: [],
 };
 
 // Actions

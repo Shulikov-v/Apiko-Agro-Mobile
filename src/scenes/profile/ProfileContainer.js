@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 
 import ProfileView from './ProfileView';
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   const { profile } = state.profile;
   return {
     email: profile.email,
-    fullName: `${profile.firstName} ${profile.lastName}`
+    fullName: `${profile.firstName} ${profile.lastName}`,
   };
 };
 

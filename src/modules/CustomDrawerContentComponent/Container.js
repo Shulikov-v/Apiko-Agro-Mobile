@@ -9,11 +9,7 @@ import View from './View';
 const enhance = compose(
   connect(
     null,
-    dispatch => {
-      return {
-        signOut: signOut(dispatch)
-      };
-    }
+    { signOut }
   ),
 );
 

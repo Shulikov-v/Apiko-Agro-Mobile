@@ -6,7 +6,7 @@ const initialRegion = {
   latitude: 49.225012,
   longitude: 25.429044,
   latitudeDelta: 0.5,
-  longitudeDelta: 0.5
+  longitudeDelta: 0.5,
 };
 
 const enhance = compose(

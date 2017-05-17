@@ -1,22 +1,17 @@
-import React from 'react';
-
 import reducer from './AuthorizationState';
 
-describe('Authorization', function() {
+describe('Authorization', () => {
   const initialState = {
     authorized: false,
     loading: false,
     error: null,
   };
 
-  describe('Reducer', function() {
-
-    it('should return initial state on SIGN_OUT', function() {
+  describe('Reducer', () => {
+    it('should return initial state on SIGN_OUT', () => {
       const actionMock = { type: 'SIGN_OUT' };
 
       expect(reducer(initialState, actionMock)).toEqual(initialState);
-    })
-
+    });
   });
-
 });

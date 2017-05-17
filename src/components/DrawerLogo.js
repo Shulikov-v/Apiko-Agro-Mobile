@@ -8,9 +8,6 @@ const deviceScreen = Dimensions.get('window');
 const coverImage = require('../images/pattern.png');
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   headerStyle: {
     height: 160,
     width: deviceScreen.width * 0.8,

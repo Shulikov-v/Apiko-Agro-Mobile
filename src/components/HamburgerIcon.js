@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Image, StyleSheet, TouchableNativeFeedback } from 'react-native';
 
 const img = require('../images/menu.png');
@@ -13,6 +13,10 @@ const HamburgerIcon = ({ navigation }) => (
     />
   </TouchableNativeFeedback>
 );
+
+HamburgerIcon.propTypes = {
+  navigation: PropTypes.object.isRequired,
+};
 
 const styles = StyleSheet.create({
   icon: {

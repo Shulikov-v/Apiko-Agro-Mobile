@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { View, Share } from 'react-native';
 import { List, Divider } from 'react-native-elements';
 import { translate } from 'react-native-translate';
@@ -15,13 +15,13 @@ import {
   goToScene,
   getLinkItem,
   getSceneTitle,
-  getSceneIconName
+  getSceneIconName,
 } from './drawerHelpers';
 
 const mainLinksBlock = [
   scenes.MAP,
   scenes.ORGANIZATION,
-  scenes.DICTIONARIES
+  scenes.DICTIONARIES,
 ];
 const profileLink = scenes.PROFILE;
 const exitLink = scenes.SIGN_IN;
@@ -34,21 +34,21 @@ const InviteParticipant = () => getLinkItem(
 
     Share.share({
       title: translate('share_message_title'),
-      message: `${translate('share_message')}: ${body.link}`
-    })
-  }
+      message: `${translate('share_message')}: ${body.link}`,
+    });
+  },
 );
 
 const ProfilePageLink = ({ navigation }) => getLinkItem(
   getSceneTitle(profileLink),
   getSceneIconName(profileLink),
-  () => goToScene(navigation, profileLink)
+  () => goToScene(navigation, profileLink),
 );
 
 const ExitLink = ({ signOut }) => getLinkItem(
   'exit',
   getSceneIconName(exitLink),
-  () => signOut()
+  () => signOut(),
 );
 
 const renderLinkToScene = navigation => (sceneKey, i) => (
@@ -56,7 +56,7 @@ const renderLinkToScene = navigation => (sceneKey, i) => (
     {getLinkItem(
       getSceneTitle(sceneKey),
       getSceneIconName(sceneKey),
-      () => goToScene(navigation, sceneKey)
+      () => goToScene(navigation, sceneKey),
     )}
   </View>
 );
@@ -80,5 +80,10 @@ const CustomDrawerContentComponent = ({ navigation, signOut }) => (
     />
   </View>
 );
+
+CustomDrawerContentComponent.propTypes = {
+  navigation: PropTypes.object.isRequired,
+  signOut: PropTypes.func.isRequired,
+};
 
 export default CustomDrawerContentComponent;

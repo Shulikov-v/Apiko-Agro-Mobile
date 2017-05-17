@@ -1,7 +1,7 @@
 import R from 'ramda';
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { View } from 'react-native';
-import { MapView }  from 'expo';
+import { MapView } from 'expo';
 
 import colors from '../../../styles/colors';
 
@@ -13,7 +13,7 @@ const PolygonsView = ({
                         getPolygonInfoById,
                       }) => {
   const getFormattedCoords = coords =>
-    coords.map(cord => ({latitude: cord.lat, longitude: cord.lng}));
+    coords.map(cord => ({ latitude: cord.lat, longitude: cord.lng }));
   const showModalWithData = polygonId => () => {
     showModal(true);
     setModalData({ ...getPolygonInfoById(polygonId), type: 'polygon' });
@@ -37,9 +37,14 @@ const PolygonsView = ({
     </View>
   )
     : null;
+};
 
+PolygonsView.propTypes = {
+  showModal: PropTypes.func.isRequired,
+  setModalData: PropTypes.func.isRequired,
+  polygons: PropTypes.array.isRequired,
+  getPolygonInfoById: PropTypes.func.isRequired,
 };
 
 export default PolygonsView;
-
 

@@ -17,4 +17,4 @@ export default function showErrorAlert(error) {
   }
 
   Alert.alert(`Error ${errorStatus}`, errorMessage);
-};
+}

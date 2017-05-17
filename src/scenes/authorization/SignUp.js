@@ -18,10 +18,11 @@ const Register = ({ onSignUp, loading, navigation }) => (
 Register.propTypes = {
   onSignUp: PropTypes.func,
   loading: PropTypes.bool,
+  navigation: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = ({ auth }) => ({
-  loading: auth.loading
+  loading: auth.loading,
 });
 
 const enhance = compose(

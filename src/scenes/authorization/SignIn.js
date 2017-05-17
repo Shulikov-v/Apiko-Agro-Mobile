@@ -20,6 +20,7 @@ LogIn.propTypes = {
   onSignIn: PropTypes.func,
   loading: PropTypes.bool,
   error: PropTypes.any,
+  navigation: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = ({ auth }) => ({

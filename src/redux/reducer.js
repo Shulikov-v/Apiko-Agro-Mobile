@@ -23,7 +23,7 @@ const appReducer = combineReducers({
 
   auth: AuthorizationReducer,
   session: SessionStateReducer,
-  navigatorState: NavigatorStateReducer
+  navigatorState: NavigatorStateReducer,
 });
 
 export default (state, action) => appReducer(state, action);

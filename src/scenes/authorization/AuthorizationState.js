@@ -1,9 +1,10 @@
+// eslint-disable-next-line react-native/split-platform-components
 import { ToastAndroid } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 
 import {
   setAuthenticationToken,
-  clearAuthenticationToken
+  clearAuthenticationToken,
 } from '../../utils/authentication';
 import { apiEndpoint, post } from '../../utils/api';
 
@@ -29,7 +30,7 @@ const ajaxAuthFailure = error => ({ type: AJAX_AUTH_FAILURE, payload: error });
 
 // Thunks
 export function signIn({ email, password }) {
-  return async function(dispatch) {
+  return async function (dispatch) {
     dispatch(ajaxAuthRequest());
 
     const payload = { email, password };
@@ -48,17 +49,15 @@ export function signIn({ email, password }) {
 
       dispatch(ajaxAuthSuccess());
 
-      dispatch(NavigationActions.navigate({routeName: 'Preloader'}));
-
-    } catch(err) {
+      dispatch(NavigationActions.navigate({ routeName: 'Preloader' }));
+    } catch (err) {
       dispatch(ajaxAuthFailure(err));
     }
-
-  }
+  };
 }
 
 export function signUp({ email, name, surname, password }) {
-  return async function(dispatch) {
+  return async function (dispatch) {
     dispatch(ajaxAuthRequest());
 
     const payload = { email, firstName: name, lastName: surname, password };
@@ -74,22 +73,20 @@ export function signUp({ email, name, surname, password }) {
       dispatch(ajaxAuthSuccess());
       ToastAndroid.show('Successfully signed up!', ToastAndroid.SHORT);
 
-      dispatch(NavigationActions.navigate({routeName: 'SignIn'}));
-
-    } catch(err) {
+      dispatch(NavigationActions.navigate({ routeName: 'SignIn' }));
+    } catch (err) {
       dispatch(ajaxAuthFailure(err));
     }
-
-  }
+  };
 }
 
-export function signOut(dispatch) {
-  return async function() {
+export function signOut() {
+  return async function (dispatch) {
     await clearAuthenticationToken();
     dispatch({ type: SIGN_OUT });
 
-    dispatch(NavigationActions.navigate({routeName: 'Authorization'}));
-  }
+    dispatch(NavigationActions.navigate({ routeName: 'Authorization' }));
+  };
 }
 
 // Reducer
