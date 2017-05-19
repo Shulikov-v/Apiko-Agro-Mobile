@@ -37,18 +37,4 @@ export default function getNavigationOptionsByScene(sceneTitle) {
       headerTitleStyle: styles.titleStyle,
     }),
   };
-
-
-  // return ({ naviganion, screenProps }) => ({
-  //   navigationOptions: {
-  //     title: translation[sceneTitle],
-  //     header: (navigation, defaultHeader) => (defaultHeaderConfig(navigation, sceneTitle))
-  //   }
-  // })
-  // return {
-  //   navigationOptions: {
-  //     title: translation[sceneTitle],
-  //     header: (navigation, defaultHeader) => (defaultHeaderConfig(navigation, sceneTitle))
-  //   }
-  // }
 }
